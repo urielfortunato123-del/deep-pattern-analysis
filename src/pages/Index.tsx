@@ -3,7 +3,8 @@ import { AnalysisCard } from "@/components/AnalysisCard";
 import { StatRow } from "@/components/StatRow";
 import { NumerologyBadge } from "@/components/NumerologyBadge";
 import { DistributionBar } from "@/components/DistributionBar";
-import { BarChart3, Hash, Sparkles, Target, TrendingUp, Zap } from "lucide-react";
+import { QuantumOracle } from "@/components/QuantumOracle";
+import { BarChart3, Hash, Sparkles, Target, TrendingUp, Zap, Atom } from "lucide-react";
 
 const drawnNumbers = [9, 13, 21, 32, 33, 59];
 const sum = drawnNumbers.reduce((a, b) => a + b, 0);
@@ -194,8 +195,19 @@ const Index = () => {
           </div>
         </AnalysisCard>
 
+        {/* Quantum Oracle */}
+        <section className="mb-12">
+          <div className="flex items-center gap-3 mb-6 opacity-0 animate-fade-in" style={{ animationDelay: "1200ms", animationFillMode: "forwards" }}>
+            <Atom className="w-6 h-6 text-cosmic-purple" />
+            <h2 className="font-display text-3xl font-semibold text-foreground">Oráculo Quântico</h2>
+          </div>
+          <div className="opacity-0 animate-fade-in" style={{ animationDelay: "1300ms", animationFillMode: "forwards" }}>
+            <QuantumOracle />
+          </div>
+        </section>
+
         {/* Footer */}
-        <footer className="mt-16 text-center opacity-0 animate-fade-in" style={{ animationDelay: "1200ms", animationFillMode: "forwards" }}>
+        <footer className="mt-16 text-center opacity-0 animate-fade-in" style={{ animationDelay: "1400ms", animationFillMode: "forwards" }}>
           <p className="text-muted-foreground text-sm">
             Análise simbólica não constitui previsão. Números sorteados em 01/01/2026.
           </p>
