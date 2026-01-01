@@ -1,0 +1,4 @@
+project_id = "rjoqsudeogwcrvkekkhy"
+
+[functions.quantum-oracle]
+verify_jwt = false
