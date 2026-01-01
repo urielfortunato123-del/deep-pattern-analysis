@@ -4,7 +4,7 @@ import { StatRow } from "@/components/StatRow";
 import { NumerologyBadge } from "@/components/NumerologyBadge";
 import { DistributionBar } from "@/components/DistributionBar";
 import { QuantumOracle } from "@/components/QuantumOracle";
-import { NumberGenerator } from "@/components/NumberGenerator";
+import { LotteryTabs } from "@/components/LotteryTabs";
 import { BarChart3, Hash, Sparkles, Target, TrendingUp, Zap, Atom, Dices } from "lucide-react";
 
 const drawnNumbers = [9, 13, 21, 32, 33, 59];
@@ -196,14 +196,14 @@ const Index = () => {
           </div>
         </AnalysisCard>
 
-        {/* Number Generator */}
+        {/* Lottery Games Generator */}
         <section className="mb-12">
           <div className="flex items-center gap-3 mb-6 opacity-0 animate-fade-in" style={{ animationDelay: "1100ms", animationFillMode: "forwards" }}>
             <Dices className="w-6 h-6 text-gold" />
-            <h2 className="font-display text-3xl font-semibold text-foreground">Gerador de Números</h2>
+            <h2 className="font-display text-3xl font-semibold text-foreground">Gerador Quântico</h2>
           </div>
           <div className="opacity-0 animate-fade-in" style={{ animationDelay: "1200ms", animationFillMode: "forwards" }}>
-            <NumberGenerator />
+            <LotteryTabs />
           </div>
         </section>
 
