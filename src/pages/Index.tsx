@@ -5,6 +5,7 @@ import { NumerologyBadge } from "@/components/NumerologyBadge";
 import { DistributionBar } from "@/components/DistributionBar";
 import { QuantumOracle } from "@/components/QuantumOracle";
 import { LotteryTabs } from "@/components/LotteryTabs";
+import { UserMenu } from "@/components/UserMenu";
 import { BarChart3, Hash, Sparkles, Target, TrendingUp, Zap, Atom, Dices } from "lucide-react";
 
 const drawnNumbers = [9, 13, 21, 32, 33, 59];
@@ -37,16 +38,21 @@ const Index = () => {
   return (
     <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
+        {/* Top Bar with User Menu */}
+        <div className="flex justify-end mb-8 opacity-0 animate-fade-in" style={{ animationFillMode: "forwards" }}>
+          <UserMenu />
+        </div>
+
         {/* Header */}
-        <header className="text-center mb-16 opacity-0 animate-fade-in" style={{ animationFillMode: "forwards" }}>
+        <header className="text-center mb-16 opacity-0 animate-fade-in" style={{ animationDelay: "100ms", animationFillMode: "forwards" }}>
           <p className="text-gold/80 font-mono text-sm tracking-widest uppercase mb-3">
-            01 de Janeiro de 2026
+            Oráculo Quântico de Loterias
           </p>
           <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-foreground mb-4">
-            Mega da <span className="text-gold">Virada</span>
+            Inteligência <span className="text-gold">Quântica</span>
           </h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Análise estatística e leitura simbólica — razão e arquétipo lado a lado
+            Análise estatística, numerologia cabalística e mapa astral — todos os jogos em um só lugar
           </p>
         </header>
 

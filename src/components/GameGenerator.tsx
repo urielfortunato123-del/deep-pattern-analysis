@@ -1,11 +1,14 @@
 import { useState } from "react";
-import { Calendar, Sparkles, Loader2, ArrowRight, AlertTriangle } from "lucide-react";
+import { Calendar, Sparkles, Loader2, ArrowRight, AlertTriangle, Save } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
 import { LotteryGame } from "@/lib/lotteryGames";
+import { ShareButtons } from "@/components/ShareButtons";
+import { useAuth } from "@/hooks/useAuth";
+import { supabase } from "@/integrations/supabase/client";
 
 interface GeneratedResult {
   numbers: number[];
@@ -20,11 +23,13 @@ interface GameGeneratorProps {
 
 export const GameGenerator = ({ game }: GameGeneratorProps) => {
   const { toast } = useToast();
+  const { user } = useAuth();
   const [previousNumbers, setPreviousNumbers] = useState<string[]>(
     Array(game.numbersCount).fill("")
   );
   const [nextDrawDate, setNextDrawDate] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
   const [result, setResult] = useState<GeneratedResult | null>(null);
 
   const handleNumberChange = (index: number, value: string) => {
@@ -44,10 +49,36 @@ export const GameGenerator = ({ game }: GameGeneratorProps) => {
   };
 
   const formatNumber = (num: number): string => {
-    if (game.maxNumber >= 100) {
-      return num.toString().padStart(2, "0");
-    }
     return num.toString().padStart(2, "0");
+  };
+
+  const saveGame = async () => {
+    if (!user || !result) return;
+    
+    setIsSaving(true);
+    try {
+      const { error } = await supabase.from("generated_games").insert({
+        user_id: user.id,
+        game_type: game.id,
+        game_name: game.name,
+        numbers: result.numbers,
+        previous_numbers: previousNumbers.map((n) => parseInt(n)),
+        draw_date: nextDrawDate,
+        analysis: result.analysis,
+      });
+
+      if (error) throw error;
+      toast({ title: "Jogo salvo! 💾" });
+    } catch (error) {
+      console.error("Error saving game:", error);
+      toast({
+        title: "Erro ao salvar",
+        description: "Tente novamente",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSaving(false);
+    }
   };
 
   const generateNumbers = async () => {
@@ -159,7 +190,6 @@ Termine com aviso de que é análise simbólica, não previsão garantida.`;
       }
 
       if (extractedNumbers.length !== game.numbersCount) {
-        // Fallback: try to find numbers in the text
         const regex = game.maxNumber >= 100 ? /\b(\d{1,3})\b/g : /\b(\d{1,2})\b/g;
         const allNumbers = fullResponse.match(regex);
         if (allNumbers) {
@@ -185,7 +215,6 @@ Termine com aviso de que é análise simbólica, não previsão garantida.`;
     }
   };
 
-  // For Lotomania, show numbers in a grid input
   const isLargeGame = game.numbersCount > 10;
 
   return (
@@ -260,7 +289,7 @@ Termine com aviso de que é análise simbólica, não previsão garantida.`;
         ) : (
           <>
             <Sparkles className="w-5 h-5 mr-2" />
-            Gerar Jogo da {game.shortName}
+            Gerar Jogo
             <ArrowRight className="w-5 h-5 ml-2" />
           </>
         )}
@@ -298,6 +327,31 @@ Termine com aviso de que é análise simbólica, não previsão garantida.`;
                   </span>
                 </div>
               ))}
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex flex-wrap justify-center gap-3 mt-4">
+              <ShareButtons
+                numbers={result.numbers}
+                gameName={game.name}
+                drawDate={new Date(nextDrawDate).toLocaleDateString("pt-BR")}
+              />
+              {user && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={saveGame}
+                  disabled={isSaving}
+                  className="border-gold/30 text-gold hover:bg-gold/10"
+                >
+                  {isSaving ? (
+                    <Loader2 className="w-4 h-4 mr-1 animate-spin" />
+                  ) : (
+                    <Save className="w-4 h-4 mr-1" />
+                  )}
+                  Salvar
+                </Button>
+              )}
             </div>
           </div>
 
