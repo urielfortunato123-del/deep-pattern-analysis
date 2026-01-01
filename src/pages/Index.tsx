@@ -219,9 +219,12 @@ const Index = () => {
         </section>
 
         {/* Footer */}
-        <footer className="mt-16 text-center opacity-0 animate-fade-in" style={{ animationDelay: "1500ms", animationFillMode: "forwards" }}>
+        <footer className="mt-16 text-center opacity-0 animate-fade-in space-y-3" style={{ animationDelay: "1500ms", animationFillMode: "forwards" }}>
           <p className="text-muted-foreground text-sm">
             Análise simbólica não constitui previsão. Números sorteados em 01/01/2026.
+          </p>
+          <p className="text-gold/80 text-sm font-medium">
+            Desenvolvido por <span className="text-gold">Uriel da Fonseca Fortunato</span>
           </p>
         </footer>
       </div>
