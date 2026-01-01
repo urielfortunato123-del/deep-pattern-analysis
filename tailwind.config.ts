@@ -13,12 +13,29 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        display: ['Cormorant Garamond', 'serif'],
+        body: ['Outfit', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        gold: {
+          DEFAULT: "hsl(var(--gold))",
+          dim: "hsl(var(--gold-dim))",
+          glow: "hsl(var(--gold-glow))",
+        },
+        cosmic: {
+          purple: "hsl(var(--cosmic-purple))",
+          blue: "hsl(var(--cosmic-blue))",
+        },
+        mystic: {
+          teal: "hsl(var(--mystic-teal))",
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -65,25 +82,37 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+        shimmer: {
+          "0%": { backgroundPosition: "-200% 0" },
+          "100%": { backgroundPosition: "200% 0" },
+        },
+        "fade-in": {
+          "0%": { opacity: "0", transform: "translateY(10px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "scale-in": {
+          "0%": { opacity: "0", transform: "scale(0.9)" },
+          "100%": { opacity: "1", transform: "scale(1)" },
+        },
+        "glow-pulse": {
+          "0%, 100%": { boxShadow: "0 0 20px hsl(45 90% 55% / 0.3)" },
+          "50%": { boxShadow: "0 0 40px hsl(45 90% 55% / 0.5)" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        shimmer: "shimmer 2s linear infinite",
+        "fade-in": "fade-in 0.5s ease-out forwards",
+        "scale-in": "scale-in 0.3s ease-out forwards",
+        "glow-pulse": "glow-pulse 3s ease-in-out infinite",
       },
     },
   },
