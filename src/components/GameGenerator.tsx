@@ -127,7 +127,7 @@ export const GameGenerator = ({ game }: GameGeneratorProps) => {
 
     const extraDraws = getExtraDrawsData();
     
-    const prompt = `TAREFA: Gerar ${game.numbersCount} números ALTAMENTE OTIMIZADOS para a ${game.name}.
+    const prompt = `TAREFA: Gerar ${game.numbersCount} números com MÁXIMA RESSONÂNCIA QUÂNTICO-CABALÍSTICA para a ${game.name}.
 
 REGRAS DO JOGO ${game.name.toUpperCase()}:
 - Quantidade: ${game.numbersCount} números
@@ -137,42 +137,46 @@ DADOS DE ENTRADA:
 - Sorteio anterior (-1): ${previousNumbers.map((n) => formatNumber(parseInt(n))).join(", ")}${extraDraws}
 - Data alvo: ${nextDrawDate}
 
-⚛️ METODOLOGIA QUÂNTICA v3.2 - ÓRBITA APERTADA:
+⚛️🔯 METODOLOGIA QUÂNTICO-CABALÍSTICA v4.0:
 
-1. **ÓRBITA PRIORITÁRIA ±1 e ±2 (CRÍTICO)**
-   Para CADA número X do sorteio -1, PRIORIZE: X-1, X+1, X-2, X+2
-   Use ±3 APENAS se necessário para completar.
-   NUNCA repita números exatos do sorteio anterior.
-   ${extraDraws ? `Se houver -2 e -3, identifique números "quentes" e "gaps".` : ""}
+📅 **1. VIBRAÇÃO DO DIA (CRÍTICO)**
+   Data: ${nextDrawDate}
+   Calcule: soma de TODOS os dígitos da data → reduza a 1 dígito (exceto 11, 22, 33)
+   Este é o NÚMERO REGENTE - priorize números que reduzem a ele!
 
-2. **REGRA DE PROXIMIDADE MÁXIMA**
-   - PELO MENOS 4 números em ±1 ou ±2 do sorteio -1
-   - Máximo 2 números em ±3
-   - TOTAL: 6/6 devem estar em alguma órbita
+🔯 **2. ANÁLISE CABALÍSTICA DO SORTEIO -1**
+   - Reduza cada número a 1-9 (ou mestre 11/22/33)
+   - Números mestres têm PESO DOBRADO nas órbitas
+   - Triangulares sagrados: 3, 6, 10, 15, 21, 28, 36, 45, 55
 
-3. **DISTRIBUIÇÃO**
-   - 5-6 faixas decimais
-   - 3 pares + 3 ímpares
-   - Finais únicos
-   - Zero consecutivos
+⚛️ **3. ÓRBITA QUÂNTICA COM AJUSTE MÍSTICO**
+   - Base: X±1, X±2 do sorteio -1 (mínimo 4 números)
+   - AJUSTE CABALÍSTICO: priorize candidatos que reduzem ao número regente do dia
+   - Exemplo: se regente = 5, priorize 05, 14, 23, 32, 41, 50
 
-4. **ANTI-REBANHO**: Evite 7,13,21,33. Prefira 38,41,43,47,52,56,58
+☥ **4. PADRÕES SAGRADOS**
+   - Inclua pelo menos 1 número triangular (21, 28, 36, 45, 55)
+   - Busque ressonância com 7 (perfeição divina) ou 9 (completude)
+   - O 8 é o caminho óctuplo budista - número de sorte
 
-5. **SOMA**: 140-180
-
-6. **VALIDAÇÃO FINAL**
-   Conte quantos estão a ±1 ou ±2. Se <4, REFAÇA.
+🌙 **5. VALIDAÇÃO MÍSTICA**
+   - ±1/±2: mínimo 4 números ✓
+   - Ressonância com regente: pelo menos 2 números ✓
+   - Soma: 140-180 ✓
+   - 3P/3I, finais únicos ✓
 
 FORMATO:
 **NÚMEROS: XX, XX, XX, XX, XX, XX**
 
-ANÁLISE:
-- Órbita ±1: X números
-- Órbita ±2: X números  
-- Órbita ±3: X números
-- Soma: XXX
+🔮 ANÁLISE MÍSTICA:
+- Número Regente do Dia: X (significado cabalístico)
+- Órbita ±1: X números (liste)
+- Órbita ±2: X números (liste)
+- Ressonância Cabalística: X/6 reduzem ao regente
+- Números Sagrados presentes: liste
+- Soma: XXX → reduz a Y
 
-⚠️ Análise probabilística.`;
+⚠️ Análise simbólica-probabilística.`;
 
     try {
       const resp = await fetch(CHAT_URL, {
