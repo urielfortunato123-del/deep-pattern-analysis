@@ -94,57 +94,64 @@ export const GameGenerator = ({ game }: GameGeneratorProps) => {
     setIsLoading(true);
     setResult(null);
 
-    const prompt = `TAREFA: Gerar ${game.numbersCount} números OTIMIZADOS para a ${game.name} com análise completa.
+    const prompt = `TAREFA: Gerar ${game.numbersCount} números ALTAMENTE OTIMIZADOS para a ${game.name}.
 
 REGRAS DO JOGO ${game.name.toUpperCase()}:
-- Quantidade de números: ${game.numbersCount}
+- Quantidade: ${game.numbersCount} números
 - Faixa: ${game.minNumber} a ${game.maxNumber}
-- ${game.description}
 
 DADOS DE ENTRADA:
-- Números do sorteio anterior: ${previousNumbers.map((n) => formatNumber(parseInt(n))).join(", ")}
-- Data do próximo sorteio: ${nextDrawDate}
+- Sorteio anterior: ${previousNumbers.map((n) => formatNumber(parseInt(n))).join(", ")}
+- Data alvo: ${nextDrawDate}
 
-⚛️ METODOLOGIA QUÂNTICA OTIMIZADA:
+⚛️ METODOLOGIA QUÂNTICA AVANÇADA v2.0:
 
-1. DISTRIBUIÇÃO ANTI-PADRÃO (CRÍTICO):
-   - Cobrir TODAS as faixas decimais (01-10, 11-20, 21-30, etc.)
-   - Equilibrar pares/ímpares (ideal: ${Math.floor(game.numbersCount/2)}/${Math.ceil(game.numbersCount/2)} ou ${Math.ceil(game.numbersCount/2)}/${Math.floor(game.numbersCount/2)})
-   - EVITAR finais repetidos (ex: 05, 15, 25 = ruim)
-   - EVITAR sequências consecutivas (ex: 12, 13, 14 = muito apostado)
-   - Priorizar números com FINAIS ÚNICOS
+1. **ANÁLISE DE ÓRBITA (CRÍTICO)**
+   Para CADA número do sorteio anterior, calcule a "zona de influência":
+   - Número X → gere candidatos em X±1, X±2, X±3 (prioridade máxima)
+   - Número X → considere também X±4 a X±6 (prioridade média)
+   - NUNCA repita o número exato do sorteio anterior
+   - Exemplo prático: se saiu 22, priorize 19, 20, 21, 23, 24, 25
 
-2. ANÁLISE DE PROXIMIDADE:
-   - Analisar cada número do sorteio anterior
-   - Gerar números que orbitem ±3 a ±7 de cada número anterior
-   - Exemplo: se saiu 22, considerar 17, 18, 19, 25, 26, 27, 28, 29
-   - NÃO repetir os mesmos números do sorteio anterior
+2. **DISTRIBUIÇÃO PERFEITA**
+   - Cobrir EXATAMENTE 5 ou 6 faixas decimais diferentes
+   - Equilíbrio: ${Math.floor(game.numbersCount/2)} pares + ${Math.ceil(game.numbersCount/2)} ímpares (ou vice-versa)
+   - TODOS os finais devem ser ÚNICOS (0-9, sem repetição)
+   - ZERO sequências consecutivas (12-13 ou 45-46 = proibido)
 
-3. EVITAR NÚMEROS POPULARES:
-   - Evitar: 7, 13, 21, 33 (superstição)
-   - Evitar: 1, 60 (extremos)
-   - Evitar: datas de aniversário (01-31 concentram apostas)
-   - Preferir números "feios": 38, 41, 47, 52, 56, 58
+3. **NÚMEROS ANTI-REBANHO**
+   EVITE (muito apostados):
+   - Supersticiosos: 7, 13, 21, 33
+   - Extremos: 1, 2, 59, 60
+   - Datas: 01 a 31 (aniversários)
+   
+   PREFIRA (pouco apostados):
+   - "Feios": 38, 41, 43, 47, 52, 56, 58
+   - Primos altos: 37, 41, 43, 47, 53
+   - Dezena 40-50 (menos popular)
 
-4. CABALA NUMEROLÓGICA:
-   - Reduzir data do sorteio (${nextDrawDate}) ao número raiz
-   - Incluir números que vibrem nessa frequência
+4. **SOMA IDEAL**
+   - Mega-Sena: soma entre 140-180 (média histórica ~167)
+   - Evite extremos (<120 ou >210)
 
-5. SOMA TOTAL:
-   - A soma dos ${game.numbersCount} números deve estar entre 120-200 (Mega-Sena)
-   - Evitar somas extremas (muito baixas ou muito altas)
+5. **VALIDAÇÃO FINAL**
+   Antes de responder, VERIFIQUE:
+   ✓ Todos os finais são diferentes?
+   ✓ Nenhuma sequência consecutiva?
+   ✓ Pelo menos 4 números estão na órbita (±3) do sorteio anterior?
+   ✓ Soma está entre 140-180?
+   ✓ Tem números da dezena 40-50?
 
-FORMATO DE RESPOSTA OBRIGATÓRIO:
-Primeiro, liste os ${game.numbersCount} números escolhidos no formato: **NÚMEROS: XX, XX, XX, ...**
+FORMATO OBRIGATÓRIO:
+**NÚMEROS: XX, XX, XX, XX, XX, XX**
 
-Depois, dê uma análise CONCISA (máximo 300 palavras) explicando:
-- Lógica de PROXIMIDADE com sorteio anterior
+ANÁLISE (máx 250 palavras):
+- Quantos números estão na órbita ±3 do anterior
 - Distribuição por faixas
-- Equilíbrio pares/ímpares
-- Por que esses números são ANTI-PADRÃO (menos apostados)
-- Índice de otimização (ex: 85%)
+- Finais únicos confirmados
+- Índice de otimização (%)
 
-Termine com aviso de que é análise simbólica, não previsão garantida.`;
+⚠️ Análise probabilística, não previsão garantida.`;
 
     try {
       const resp = await fetch(CHAT_URL, {
