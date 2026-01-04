@@ -474,7 +474,7 @@ FORMATO:
               <ShareButtons
                 numbers={result.numbers}
                 gameName={game.name}
-                drawDate={new Date(nextDrawDate).toLocaleDateString("pt-BR")}
+                drawDate={nextDrawDate.split("-").reverse().join("/")}
               />
               {user && (
                 <Button
