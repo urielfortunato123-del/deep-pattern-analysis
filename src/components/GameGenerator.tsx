@@ -127,7 +127,7 @@ export const GameGenerator = ({ game }: GameGeneratorProps) => {
 
     const extraDraws = getExtraDrawsData();
     
-    const prompt = `TAREFA: Gerar ${game.numbersCount} números com MÁXIMA RESSONÂNCIA SAGRADA para a ${game.name}.
+    const prompt = `TAREFA: Gerar ${game.numbersCount} números com MÁXIMA RESSONÂNCIA SAGRADA-ENOQUIANA para a ${game.name}.
 
 REGRAS DO JOGO ${game.name.toUpperCase()}:
 - Quantidade: ${game.numbersCount} números
@@ -137,7 +137,7 @@ DADOS DE ENTRADA:
 - Sorteio anterior (-1): ${previousNumbers.map((n) => formatNumber(parseInt(n))).join(", ")}${extraDraws}
 - Data alvo: ${nextDrawDate}
 
-✝️🔯⚛️ METODOLOGIA SAGRADA-QUÂNTICA v5.0:
+✝️📜⚛️ METODOLOGIA SAGRADA-QUÂNTICA-ENOQUIANA v6.0:
 
 📅 **1. VIBRAÇÃO DIVINA DO DIA**
    Data: ${nextDrawDate}
@@ -146,49 +146,60 @@ DADOS DE ENTRADA:
 
 ✝️ **2. NÚMEROS BÍBLICOS SAGRADOS**
    MUITO PODEROSOS (priorizar na órbita):
-   - 3 = Trindade
-   - 7 = Perfeição divina (7º dia, 7 selos, 7 trombetas)
-   - 12 = Governo divino (12 tribos, 12 apóstolos)
-   - 5 = Graça de Deus
-   - 8 = Novo começo, ressurreição
-   - 40 = Provação divina
-   ADJACENTES: 14 (7x2), 21 (7x3), 28 (7x4), 35 (7x5), 49 (7x7)
-   EVITAR: 13 (traição), 6 sozinho (homem sem Deus)
+   - 3 = Trindade | 7 = Perfeição divina | 12 = Governo divino
+   - 5 = Graça de Deus | 8 = Ressurreição | 40 = Provação
+   ADJACENTES: 14, 21, 28, 35, 49, 56 (múltiplos de 7)
+   EVITAR: 13 (traição)
 
-🔯 **3. ANÁLISE CABALÍSTICA**
+📜 **3. NUMEROLOGIA ENOQUIANA (APÓCRIFOS) - CRÍTICO!**
+   Do LIVRO DE ENOQUE:
+   - **7** = Enoque é o 7º patriarca (perfeição ancestral)
+   - **20** = 20 anjos Vigilantes (conexão celestial)
+   - **22** = Caminhos da Árvore da Vida (mestre!)
+   
+   Do LIVRO DOS JUBILEUS:
+   - **49** = 7×7 = 1 Jubileu (PLENITUDE DO TEMPO!) ← MUITO FORTE
+   - **50** = Ano do Jubileu (libertação, renovação)
+   - **14** = Idade do despertar de Abraão
+
+🔯 **4. ANÁLISE CABALÍSTICA**
    - Reduza cada número do sorteio -1 a 1-9 (ou mestre)
    - 33 = idade de Cristo = PESO MÁXIMO
    - Números triangulares: 3, 6, 10, 15, 21, 28, 36, 45, 55
 
-⚛️ **4. ÓRBITA QUÂNTICA + SAGRADA**
+⚛️ **5. ÓRBITA QUÂNTICA + SAGRADA**
    - Base: X±1, X±2 do sorteio -1 (mínimo 4 números)
-   - PRIORIZE candidatos que são bíblicos OU reduzem ao regente
-   - Se candidato = múltiplo de 7, tem prioridade máxima!
+   - PRIORIZE: múltiplos de 7, números enoquianos (49, 50, 20)
+   - Se candidato = 49 ou 50, tem prioridade máxima!
 
-☥ **5. SALTO PROFÉTICO (1-2 números) - CRÍTICO!**
-   - Inclua 1-2 números FORA da órbita direta
-   - PRIORIDADE para capturar "fugitivos":
-     * Reduzem a 8 (ressurreição): **17, 26, 35, 44, 53** ← muito forte!
-     * Múltiplos de 7: **07, 14, 21, 28, 35, 42, 49, 56**
-     * Reduzem a 11 (mestre): **29, 38, 47, 56**
-   - Se sorteio anterior tem números 50+, inclua salto na faixa 45-55
+☥ **6. SALTO PROFÉTICO-ENOQUIANO (1-2 números) - CRÍTICO!**
+   Inclua 1-2 números FORA da órbita direta
+   ORDEM DE PRIORIDADE:
+   1. **49** (Jubileu 7×7) ← MÁXIMO se disponível!
+   2. **50** (Libertação) ← muito forte
+   3. Reduzem a 8: 17, 26, 35, 44, 53
+   4. Múltiplos de 7: 07, 14, 21, 28, 35, 42, 49, 56
+   5. Reduzem a 11: 29, 38, 47, 56
+   6. **20** (Vigilantes de Enoque)
+   Se sorteio anterior tem 50+, priorize salto 45-55
 
-🌙 **6. VALIDAÇÃO SAGRADA**
+🌙 **7. VALIDAÇÃO SAGRADA**
    - ⛔ Nenhum número exato do anterior ✓
    - ±1/±2: mínimo 4 números ✓
-   - Salto(s) profético(s): 1-2 números ✓
+   - Salto(s) profético-enoquiano(s): 1-2 números ✓
    - Soma: 140-180 ✓
 
 FORMATO:
 **NÚMEROS: XX, XX, XX, XX, XX, XX**
 
-✝️🔮 ANÁLISE SAGRADA:
+✝️📜 ANÁLISE SAGRADA-ENOQUIANA:
 - Regente Divino: X
 - Órbita ±1/±2: liste cada número
-- Salto(s) Profético(s): quais e significado (reduz a 8? múltiplo de 7?)
+- Salto(s) Profético(s): quais e significado (jubileu? vigilantes? ressurreição?)
+- Conexão Apócrifa: qual número tem ligação com Enoque/Jubileus
 - Soma: XXX
 
-⚠️ Análise simbólica-profética.`;
+⚠️ Análise simbólica-profética baseada em textos bíblicos e apócrifos.`;
 
     try {
       const resp = await fetch(CHAT_URL, {
