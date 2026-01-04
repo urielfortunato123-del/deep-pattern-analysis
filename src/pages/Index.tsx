@@ -8,7 +8,8 @@ import { LotteryTabs } from "@/components/LotteryTabs";
 import { UserMenu } from "@/components/UserMenu";
 import { BarChart3, Hash, Sparkles, Target, TrendingUp, Zap, Atom, Dices } from "lucide-react";
 
-const drawnNumbers = [9, 13, 21, 32, 33, 59];
+const drawnNumbers = [5, 14, 22, 31, 47, 53];
+const drawDate = "03/01/2026";
 const sum = drawnNumbers.reduce((a, b) => a + b, 0);
 const reducedSum = sum.toString().split("").reduce((a, b) => a + parseInt(b), 0);
 const finalReduction = reducedSum > 9 ? reducedSum.toString().split("").reduce((a, b) => a + parseInt(b), 0) : reducedSum;
@@ -26,12 +27,12 @@ const oddNumbers = drawnNumbers.filter((n) => n % 2 !== 0);
 const evenNumbers = drawnNumbers.filter((n) => n % 2 === 0);
 
 const numerologyData = [
-  { number: 9, meaning: "Fechamento Cármico", description: "Último dígito antes do recomeço. Colheita e finalização de ciclos." },
-  { number: 13, meaning: "Morte Simbólica", description: "Transformação profunda. Quem ganha não continua a mesma pessoa." },
-  { number: 21, meaning: "Coroa Menor", description: "Fechamento perfeito (3×7). Número de sorte pública e manifestação." },
-  { number: 32, meaning: "Caminhos da Sabedoria", description: "Na Cabala hebraica, os 32 caminhos estruturam o universo." },
-  { number: 33, meaning: "Número Mestre", description: "Consciência elevada. Transição de nível espiritual e material." },
-  { number: 59, meaning: "Mudança Definitiva", description: "5 (movimento) + 9 (fechamento). Não há volta — ruptura total." },
+  { number: 5, meaning: "Movimento & Liberdade", description: "Energia dinâmica e mudança. Rompe estagnação e traz aventura." },
+  { number: 14, meaning: "Temperança Arcana", description: "Reduz a 5 (1+4). Equilíbrio entre extremos, moderação criativa." },
+  { number: 22, meaning: "Número Mestre Construtor", description: "O mais poderoso. Manifesta sonhos em realidade concreta." },
+  { number: 31, meaning: "Criatividade Pioneira", description: "Reduz a 4 (3+1). Construção com originalidade e liderança." },
+  { number: 47, meaning: "Sabedoria Oculta", description: "Reduz a 11→2. Intuição aguçada, parcerias e cooperação." },
+  { number: 53, meaning: "Transformação Dinâmica", description: "Reduz a 8 (5+3). Poder, abundância e ciclos de karma." },
 ];
 
 const Index = () => {
@@ -78,7 +79,7 @@ const Index = () => {
               <StatRow label="Média" value={(sum / 6).toFixed(1)} icon="μ" />
               <StatRow label="Ímpares" value={`${oddNumbers.length} (${oddNumbers.join(", ")})`} icon="⊙" />
               <StatRow label="Pares" value={`${evenNumbers.length} (${evenNumbers.join(", ")})`} icon="◎" />
-              <StatRow label="Sequências" value="32-33" highlight icon="→" />
+              <StatRow label="Sequências" value="Nenhuma" icon="→" />
             </div>
           </AnalysisCard>
 
@@ -90,18 +91,18 @@ const Index = () => {
           >
             <div className="space-y-4">
               <div className="p-3 rounded-lg bg-muted/30 border border-border/30">
-                <p className="text-sm text-muted-foreground mb-1">Finais Repetidos</p>
+                <p className="text-sm text-muted-foreground mb-1">Finais Únicos</p>
                 <p className="font-mono text-foreground">
-                  Final 9: <span className="text-gold">09, 59</span> · Final 3: <span className="text-gold">13, 33</span>
+                  Todos finais diferentes: <span className="text-gold">5, 4, 2, 1, 7, 3</span>
                 </p>
               </div>
               <div className="p-3 rounded-lg bg-muted/30 border border-border/30">
                 <p className="text-sm text-muted-foreground mb-1">Distribuição</p>
-                <p className="text-foreground">5 ímpares / 1 par — fora do padrão 3×3</p>
+                <p className="text-foreground">3 ímpares / 3 pares — padrão equilibrado 3×3</p>
               </div>
               <div className="p-3 rounded-lg bg-gold/10 border border-gold/30">
                 <p className="text-sm text-gold/80 mb-1">Diagnóstico</p>
-                <p className="text-foreground">Jogo visualmente sedutor, alta chance de múltiplos ganhadores</p>
+                <p className="text-foreground">Jogo bem distribuído, espalhado por todas as faixas — anti-padrão popular</p>
               </div>
             </div>
           </AnalysisCard>
@@ -167,9 +168,9 @@ const Index = () => {
             </div>
           </div>
           <div className="mt-4 p-4 rounded-lg bg-cosmic-purple/10 border border-cosmic-purple/30 text-center">
-            <p className="text-cosmic-purple font-semibold">Número 5 = Movimento, Ruptura, Liberdade</p>
+            <p className="text-cosmic-purple font-semibold">Número {finalReduction} = {finalReduction === 1 ? "Novo Início, Liderança" : finalReduction === 4 ? "Estrutura, Fundação, Trabalho" : finalReduction === 1 + 7 ? "Espiritualidade" : "Transformação"}</p>
             <p className="text-sm text-muted-foreground mt-1">
-              Mega da Virada sempre vibra no 5 — o único sorteio pensado para quebrar rotina social.
+              Soma 172 → vibração 1: energia de novos começos e liderança individual.
             </p>
           </div>
         </AnalysisCard>
@@ -183,21 +184,21 @@ const Index = () => {
         >
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
             <div className="p-4">
-              <p className="text-3xl font-display font-bold text-gold mb-2">Limpo</p>
-              <p className="text-sm text-muted-foreground">Estatisticamente elegante</p>
+              <p className="text-3xl font-display font-bold text-gold mb-2">Equilibrado</p>
+              <p className="text-sm text-muted-foreground">3 pares / 3 ímpares</p>
             </div>
             <div className="p-4">
-              <p className="text-3xl font-display font-bold text-gold mb-2">Sedutor</p>
-              <p className="text-sm text-muted-foreground">Visualmente atrativo</p>
+              <p className="text-3xl font-display font-bold text-gold mb-2">Espalhado</p>
+              <p className="text-sm text-muted-foreground">Todas faixas cobertas</p>
             </div>
             <div className="p-4">
-              <p className="text-3xl font-display font-bold text-gold mb-2">Diluído</p>
-              <p className="text-sm text-muted-foreground">6 ganhadores dividem</p>
+              <p className="text-3xl font-display font-bold text-gold mb-2">Anti-Padrão</p>
+              <p className="text-sm text-muted-foreground">Sem sequências ou finais repetidos</p>
             </div>
           </div>
           <div className="mt-6 p-4 rounded-lg bg-muted/30 border border-border/30 text-center">
             <p className="text-foreground font-mono text-sm">
-              "Bom design, alto engajamento, margem unitária menor."
+              "Distribuição ideal para menos divisão de prêmio — jogo de jogador experiente."
             </p>
           </div>
         </AnalysisCard>
@@ -227,7 +228,7 @@ const Index = () => {
         {/* Footer */}
         <footer className="mt-16 text-center opacity-0 animate-fade-in space-y-3" style={{ animationDelay: "1500ms", animationFillMode: "forwards" }}>
           <p className="text-muted-foreground text-sm">
-            Análise simbólica não constitui previsão. Números sorteados em 01/01/2026.
+            Análise simbólica não constitui previsão. Números sorteados em {drawDate}.
           </p>
           <p className="text-gold/80 text-sm font-medium">
             Desenvolvido por <span className="text-gold">Uriel da Fonseca Fortunato</span>
