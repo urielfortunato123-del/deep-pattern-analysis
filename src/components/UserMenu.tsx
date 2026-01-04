@@ -23,7 +23,7 @@ export const UserMenu = () => {
   if (!user) {
     return (
       <Button
-        onClick={() => navigate("/auth")}
+        onClick={() => navigate("/")}
         variant="outline"
         className="border-gold/30 text-gold hover:bg-gold/10"
       >
