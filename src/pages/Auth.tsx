@@ -170,6 +170,10 @@ const Auth = () => {
             </button>
           </div>
         </div>
+
+        <p className="text-center text-xs text-muted-foreground mt-6">
+          Desenvolvido por Uriel da Fonseca Fortunato
+        </p>
       </div>
     </div>
   );
