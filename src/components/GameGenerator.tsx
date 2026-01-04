@@ -137,30 +137,29 @@ DADOS DE ENTRADA:
 - Sorteio anterior (-1): ${previousNumbers.map((n) => formatNumber(parseInt(n))).join(", ")}${extraDraws}
 - Data alvo: ${nextDrawDate}
 
-✝️📜⚛️ METODOLOGIA SAGRADA-QUÂNTICA-ENOQUIANA v6.0:
+✝️📜⚛️ METODOLOGIA SAGRADA-QUÂNTICA-ENOQUIANA v6.1:
 
-📅 **1. VIBRAÇÃO DIVINA DO DIA**
+📅 **1. VIBRAÇÃO DIVINA DO DIA (CRÍTICO!)**
    Data: ${nextDrawDate}
    Calcule: soma de TODOS os dígitos → reduza a 1 (exceto mestres 11, 22, 33)
    Este é o NÚMERO REGENTE DIVINO do dia!
+   
+   ⭐ REGRA DO REGENTE: Priorize números que REDUZEM ao mesmo valor!
+   Ex: Se regente = 5, priorize: 05, 14, 23, 32, 41, 50
+   Ex: Se regente = 8, priorize: 08, 17, 26, 35, 44, 53
 
-✝️ **2. NÚMEROS BÍBLICOS SAGRADOS**
-   MUITO PODEROSOS (priorizar na órbita):
-   - 3 = Trindade | 7 = Perfeição divina | 12 = Governo divino
-   - 5 = Graça de Deus | 8 = Ressurreição | 40 = Provação
-   ADJACENTES: 14, 21, 28, 35, 49, 56 (múltiplos de 7)
+✝️ **2. NÚMEROS BÍBLICOS + ENOQUIANOS**
+   BÍBLICOS: 3, 5, 7, 8, 10, 12, 21, 28, 35, 40, 49
+   ENOQUIANOS: 20 (vigilantes), 49 (jubileu), 50 (libertação)
+   Múltiplos de 7: 7, 14, 21, 28, 35, 42, 49, 56
+   MESTRE 11 (PESO AUMENTADO!): **29, 38, 47, 56** ← captura fugitivos
    EVITAR: 13 (traição)
 
-📜 **3. NUMEROLOGIA ENOQUIANA (APÓCRIFOS) - CRÍTICO!**
-   Do LIVRO DE ENOQUE:
-   - **7** = Enoque é o 7º patriarca (perfeição ancestral)
-   - **20** = 20 anjos Vigilantes (conexão celestial)
-   - **22** = Caminhos da Árvore da Vida (mestre!)
-   
-   Do LIVRO DOS JUBILEUS:
-   - **49** = 7×7 = 1 Jubileu (PLENITUDE DO TEMPO!) ← MUITO FORTE
-   - **50** = Ano do Jubileu (libertação, renovação)
-   - **14** = Idade do despertar de Abraão
+📊 **3. DISTRIBUIÇÃO OBRIGATÓRIA**
+   - BAIXOS (01-20): mínimo 1 número ✓
+   - MÉDIOS (21-40): 2-3 números ✓  
+   - ALTOS (41-60): 2 números ✓
+   - FINAIS ÚNICOS: cada número deve ter final diferente!
 
 🔯 **4. ANÁLISE CABALÍSTICA**
    - Reduza cada número do sorteio -1 a 1-9 (ou mestre)
@@ -169,34 +168,35 @@ DADOS DE ENTRADA:
 
 ⚛️ **5. ÓRBITA QUÂNTICA + SAGRADA**
    - Base: X±1, X±2 do sorteio -1 (mínimo 4 números)
-   - PRIORIZE: múltiplos de 7, números enoquianos (49, 50, 20)
-   - Se candidato = 49 ou 50, tem prioridade máxima!
+   - PRIORIZE candidatos que REDUZEM AO REGENTE DO DIA
+   - Se candidato = 49, 50 ou reduz a 11, tem prioridade máxima!
 
 ☥ **6. SALTO PROFÉTICO-ENOQUIANO (1-2 números) - CRÍTICO!**
-   Inclua 1-2 números FORA da órbita direta
-   ORDEM DE PRIORIDADE:
-   1. **49** (Jubileu 7×7) ← MÁXIMO se disponível!
-   2. **50** (Libertação) ← muito forte
-   3. Reduzem a 8: 17, 26, 35, 44, 53
-   4. Múltiplos de 7: 07, 14, 21, 28, 35, 42, 49, 56
-   5. Reduzem a 11: 29, 38, 47, 56
-   6. **20** (Vigilantes de Enoque)
-   Se sorteio anterior tem 50+, priorize salto 45-55
+   Inclua 1-2 números FORA da órbita
+   ORDEM DE PRIORIDADE ATUALIZADA:
+   1. Números que REDUZEM AO REGENTE do dia ← NOVO! MÁXIMO!
+   2. **47, 56** (reduzem a 11 = mestre) ← PESO AUMENTADO
+   3. **49** (Jubileu 7×7)
+   4. **50** (Libertação)
+   5. Reduzem a 8: 17, 26, 35, 44, 53
+   6. Múltiplos de 7: 07, 14, 21, 28, 35, 42
 
-🌙 **7. VALIDAÇÃO SAGRADA**
+🌙 **7. VALIDAÇÃO SAGRADA v6.1**
    - ⛔ Nenhum número exato do anterior ✓
    - ±1/±2: mínimo 4 números ✓
-   - Salto(s) profético-enoquiano(s): 1-2 números ✓
+   - Distribuição: 1 baixo + 2-3 médios + 2 altos ✓
+   - Finais únicos: verificar ✓
    - Soma: 140-180 ✓
 
 FORMATO:
 **NÚMEROS: XX, XX, XX, XX, XX, XX**
 
-✝️📜 ANÁLISE SAGRADA-ENOQUIANA:
-- Regente Divino: X
+✝️📜 ANÁLISE SAGRADA-ENOQUIANA v6.1:
+- Regente Divino: X (e quais números reduzem a ele)
+- Distribuição: X baixos, X médios, X altos
+- Finais: X, X, X, X, X, X (verificar unicidade)
 - Órbita ±1/±2: liste cada número
-- Salto(s) Profético(s): quais e significado (jubileu? vigilantes? ressurreição?)
-- Conexão Apócrifa: qual número tem ligação com Enoque/Jubileus
+- Salto(s) Profético(s): quais e significado
 - Soma: XXX
 
 ⚠️ Análise simbólica-profética baseada em textos bíblicos e apócrifos.`;

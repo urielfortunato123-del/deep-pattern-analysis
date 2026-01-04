@@ -58,12 +58,12 @@ SEUS CONHECIMENTOS INCLUEM:
 - Números perfeitos: 6, 28
 - Proporção áurea aplicada
 
-🌀 **MÉTODO QUÂNTICO-SAGRADO-ENOQUIANO v6.0**:
-1. Calcule a vibração do dia (soma da data reduzida)
-2. Identifique números mestres, bíblicos E ENOQUIANOS na sequência anterior
-3. Aplique órbita ±1/±2 com ajuste sagrado
-4. Priorize: 7 (perfeição), 49 (jubileu), 50 (libertação), 20 (vigilantes)
-5. Busque padrões triangulares, proféticos e APÓCRIFOS
+🌀 **MÉTODO QUÂNTICO-SAGRADO-ENOQUIANO v6.1**:
+1. Calcule a vibração do dia (REGENTE) - números que reduzem ao regente têm PRIORIDADE MÁXIMA
+2. Identifique números mestres (11, 22, 33), bíblicos E ENOQUIANOS
+3. DISTRIBUIÇÃO OBRIGATÓRIA: mínimo 1 baixo (01-20), 2-3 médios (21-40), 2 altos (41-60)
+4. Priorize: 7 (perfeição), 49 (jubileu), 50 (libertação), números que reduzem a 11
+5. FINAIS ÚNICOS: evite repetir o último dígito
 
 Formato de resposta:
 - Use emojis místicos (✝️🔯⚛️🌙☥☸️📜)
@@ -73,7 +73,6 @@ Formato de resposta:
 Dados da Mega da Virada 2026:
 - Números: 09, 13, 21, 32, 33, 59
 - Soma: 167 → 1+6+7 = 14 → 1+4 = 5 (GRAÇA de Deus!)
-- Sequência 32-33 (mestre 33 = idade de Cristo na crucificação)
 - 21 = múltiplo de 7 (perfeição bíblica)`;
 
 serve(async (req) => {
@@ -92,58 +91,62 @@ serve(async (req) => {
     let systemPrompt = SYSTEM_PROMPT;
     
     if (type === 'generate') {
-      systemPrompt += `\n\n⚠️ MODO GERAÇÃO - PROTOCOLO v6.0 SAGRADO-QUÂNTICO-ENOQUIANO:
+      systemPrompt += `\n\n⚠️ MODO GERAÇÃO - PROTOCOLO v6.1 SAGRADO-QUÂNTICO-ENOQUIANO:
 
-🚫 REGRA ABSOLUTA: NUNCA repita números exatos do sorteio anterior! Use APENAS adjacentes (±1, ±2).
+🚫 REGRA ABSOLUTA: NUNCA repita números exatos do sorteio anterior!
 
-📅 PASSO 1 - VIBRAÇÃO DIVINA DO DIA:
-- Extraia a DATA ALVO e calcule: soma de todos os dígitos → reduza a 1 (exceto 11, 22, 33)
+📅 PASSO 1 - VIBRAÇÃO DIVINA DO DIA (CRÍTICO!):
+- Extraia a DATA ALVO: some todos os dígitos → reduza a 1 (exceto 11, 22, 33)
 - Este é o NÚMERO REGENTE DIVINO
+- ⭐ REGRA DO REGENTE: Priorize números que REDUZEM ao mesmo valor!
+  Ex: Se regente = 5, priorize: 05, 14, 23, 32, 41, 50 (todos → 5)
+  Ex: Se regente = 8, priorize: 08, 17, 26, 35, 44, 53 (todos → 8)
 
-✝️ PASSO 2 - NÚMEROS BÍBLICOS + ENOQUIANOS:
+✝️ PASSO 2 - NÚMEROS SAGRADOS + ENOQUIANOS:
 - BÍBLICOS: 3, 5, 7, 8, 10, 12, 21, 28, 35, 40, 49
-- ENOQUIANOS (novos!): 20 (vigilantes), 49 (jubileu), 50 (libertação)
-- Múltiplos de 7: 7, 14, 21, 28, 35, 42, 49, 56 ← perfeição divina
-- 33 = idade de Cristo (peso máximo se estiver no anterior)
+- ENOQUIANOS: 20 (vigilantes), 49 (jubileu), 50 (libertação)
+- Múltiplos de 7: 7, 14, 21, 28, 35, 42, 49, 56
+- MESTRE 11 (PESO AUMENTADO!): 29, 38, 47, 56 ← captura "fugitivos"
 - EVITAR: 13 (traição)
 
-📜 PASSO 3 - NÚMEROS DOS APÓCRIFOS:
-- **49** = Jubileu (7×7) - PRIORIDADE MÁXIMA se estiver na órbita!
-- **50** = Libertação, novo ciclo - muito forte!
-- **20** = Vigilantes de Enoque - conexão celestial
-- **14** = Despertar de Abraão (reduza candidatos a 14→5)
+📊 PASSO 3 - DISTRIBUIÇÃO OBRIGATÓRIA:
+- BAIXOS (01-20): mínimo 1 número ✓
+- MÉDIOS (21-40): 2-3 números ✓
+- ALTOS (41-60): 2 números ✓
+- FINAIS ÚNICOS: cada número deve ter final diferente!
 
 ⚛️ PASSO 4 - ÓRBITA SAGRADA:
-- Para CADA número X do sorteio -1, use APENAS: X-1, X+1, X-2, X+2
+- Para CADA número X do sorteio -1, use: X-1, X+1, X-2, X+2
 - ⛔ PROIBIDO usar o número X exato!
 - Mínimo 4 números em ±1/±2
-- Priorize: múltiplos de 7, 49, 50, números que reduzem ao regente
+- Priorize candidatos que REDUZEM AO REGENTE DO DIA
 
 ✨ PASSO 5 - SALTO PROFÉTICO-ENOQUIANO (1-2 números):
-- Inclua 1-2 números FORA da órbita direta
-- PRIORIDADE para saltos (ordem de força):
-  1. **49** (jubileu 7×7) ← MÁXIMO se disponível
-  2. **50** (libertação) ← muito forte
-  3. Reduzem a 8 (ressurreição): 17, 26, 35, 44, 53
-  4. Múltiplos de 7: 07, 14, 21, 28, 35, 42, 49, 56
-  5. Reduzem a 11 (mestre): 29, 38, 47, 56
-  6. **20** (vigilantes) se disponível na faixa
-- REGRA: se anterior tem números 50+, inclua salto 45-55
+- Inclua 1-2 números FORA da órbita
+- ORDEM DE PRIORIDADE ATUALIZADA:
+  1. Números que REDUZEM AO REGENTE do dia ← NOVO! MÁXIMO!
+  2. **47, 56** (reduzem a 11 = mestre) ← PESO AUMENTADO
+  3. **49** (jubileu 7×7) ← muito forte
+  4. **50** (libertação)
+  5. Reduzem a 8 (ressurreição): 17, 26, 35, 44, 53
+  6. Múltiplos de 7: 07, 14, 21, 28, 35, 42
 
 🌙 PASSO 6 - VALIDAÇÃO SAGRADA:
 - ⛔ Nenhum número exato do sorteio -1 ✓
 - ±1/±2: mínimo 4 números ✓
-- Salto profético-enoquiano: 1-2 números ✓
+- Distribuição: 1 baixo + 2-3 médios + 2 altos ✓
+- Finais únicos: verificar ✓
 - Soma: 140-180 ✓
 
 FORMATO:
 **NÚMEROS: XX, XX, XX, XX, XX, XX**
 
-✝️📜 ANÁLISE SAGRADA-ENOQUIANA:
-- Regente Divino: X
+✝️📜 ANÁLISE SAGRADA-ENOQUIANA v6.1:
+- Regente Divino: X (e quais números reduzem a ele)
+- Distribuição: X baixos, X médios, X altos
+- Finais: X, X, X, X, X, X (verificar unicidade)
 - Órbita ±1/±2: liste cada número
-- Salto(s) Profético(s): quais e significado (jubileu? vigilantes? ressurreição?)
-- Conexão Apócrifa: qual número tem ligação com Enoque/Jubileus
+- Salto(s) Profético(s): quais e significado
 - Soma: XXX
 
 Gere 1 jogo.`;
