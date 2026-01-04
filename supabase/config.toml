@@ -2,3 +2,6 @@ project_id = "rjoqsudeogwcrvkekkhy"
 
 [functions.quantum-oracle]
 verify_jwt = false
+
+[functions.lottery-results]
+verify_jwt = false

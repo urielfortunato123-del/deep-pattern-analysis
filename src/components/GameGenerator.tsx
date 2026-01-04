@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Calendar, Sparkles, Loader2, ArrowRight, AlertTriangle, Save, ChevronDown, ChevronUp, Layers } from "lucide-react";
+import { Calendar, Sparkles, Loader2, ArrowRight, AlertTriangle, Save, ChevronDown, ChevronUp, Layers, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -42,6 +42,52 @@ export const GameGenerator = ({ game }: GameGeneratorProps) => {
   const [isSaving, setIsSaving] = useState(false);
   const [result, setResult] = useState<GeneratedResult | null>(null);
   const [hybridProgress, setHybridProgress] = useState(0);
+  const [isLoadingLastDraw, setIsLoadingLastDraw] = useState(false);
+  const [lastDrawInfo, setLastDrawInfo] = useState<{ drawNumber: string; drawDate: string } | null>(null);
+
+  const fetchLastDraw = async () => {
+    setIsLoadingLastDraw(true);
+    try {
+      const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/lottery-results`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+        },
+        body: JSON.stringify({ gameId: game.id }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Erro ao buscar último sorteio");
+      }
+
+      const data = await response.json();
+      
+      if (data.numbers && data.numbers.length > 0) {
+        // Preencher os números
+        const formattedNumbers = data.numbers.map((n: number) => n.toString().padStart(2, "0"));
+        setPreviousNumbers(formattedNumbers.slice(0, game.numbersCount));
+        setLastDrawInfo({ drawNumber: data.drawNumber, drawDate: data.drawDate });
+        
+        toast({
+          title: "Último sorteio carregado! 🎯",
+          description: `Concurso ${data.drawNumber} - ${data.drawDate}`,
+        });
+      } else {
+        throw new Error("Nenhum resultado encontrado");
+      }
+    } catch (error) {
+      console.error("Erro ao buscar último sorteio:", error);
+      toast({
+        title: "Erro ao buscar",
+        description: error instanceof Error ? error.message : "Não foi possível buscar o último sorteio",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoadingLastDraw(false);
+    }
+  };
 
   const handleNumberChange = (index: number, value: string, drawIndex: number = 1) => {
     const num = value.replace(/\D/g, "").slice(0, game.maxNumber >= 100 ? 3 : 2);
@@ -629,9 +675,33 @@ Este jogo combina as âncoras mais consistentes das 3 gerações quânticas. O R
 
       {/* Previous Numbers Input */}
       <div className="space-y-3">
-        <Label className="text-foreground font-medium">
-          Números do Sorteio Anterior ({game.numbersCount} números)
-        </Label>
+        <div className="flex items-center justify-between flex-wrap gap-2">
+          <Label className="text-foreground font-medium">
+            Números do Sorteio Anterior ({game.numbersCount} números)
+          </Label>
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            onClick={fetchLastDraw}
+            disabled={isLoadingLastDraw}
+            className="border-gold/30 text-gold hover:bg-gold/10"
+          >
+            {isLoadingLastDraw ? (
+              <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+            ) : (
+              <Download className="w-4 h-4 mr-2" />
+            )}
+            {isLoadingLastDraw ? "Buscando..." : "Preencher Último Sorteio"}
+          </Button>
+        </div>
+        
+        {lastDrawInfo && (
+          <p className="text-xs text-muted-foreground">
+            Concurso {lastDrawInfo.drawNumber} • {lastDrawInfo.drawDate}
+          </p>
+        )}
+        
         <div className={cn(
           "flex flex-wrap gap-2",
           isLargeGame && "max-h-48 overflow-y-auto p-2 bg-muted/10 rounded-lg"
