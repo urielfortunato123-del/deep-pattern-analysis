@@ -163,7 +163,7 @@ serve(async (req) => {
     let systemPrompt = SYSTEM_PROMPT;
     
     if (type === 'generate') {
-      systemPrompt += `\n\n⚠️ MODO GERAÇÃO - PROTOCOLO HERMÉTICO v7.0:
+      systemPrompt += `\n\n⚠️ MODO GERAÇÃO - PROTOCOLO HERMÉTICO v7.1:
 
 🚫 REGRA ABSOLUTA: NUNCA repita números exatos do sorteio anterior!
 
@@ -181,18 +181,34 @@ serve(async (req) => {
 - TERRA (Heh): 4, 13, 22, 31, 40, 49, 58
 - Inclua pelo menos 2 números do elemento dominante!
 
-🔯 PASSO 3 - CAMINHOS DO SEFER YETZIRAH:
-- 3 Letras-Mãe: números que reduzem a 1 (AR), 3 (FOGO), 4 (ÁGUA)
-- 7 Letras Duplas: múltiplos de 11 (Júpiter), números mestres
-- Priorize: 22 (Caminhos), 33 (Mestre), 44 (Duplo Júpiter), 55 (Fibonacci+Mestre)
+⭐⭐ PASSO 3 - REGRAS v7.1 (NOVIDADES CRÍTICAS):
+
+🔥 PENTAGRAMA DUPLO (PESO MÁXIMO!):
+- Números que reduzem a 5 E são múltiplos de 7: **14, 35** ← PRIORIDADE ABSOLUTA!
+- 14 = 1+4=5 (Pentagrama) + 14=2×7 (perfeição) = PODER DUPLO!
+- 35 = 3+5=8? Não... 35÷7=5 ✓ mas 3+5=8. Então só 14 tem poder duplo!
+- ⭐ REGRA: SEMPRE inclua 14 se não estiver no sorteio anterior!
+
+🔯 MESTRES OBRIGATÓRIOS:
+- DEVE incluir pelo menos 1 MESTRE: 11, 22, 33, 44, 55
+- Prioridade: **22** (Caminhos da Árvore) > 55 (Fibonacci+Mestre) > 44 > 33 > 11
+
+🔢 PRIMOS SAGRADOS (30-60):
+- Lista: **31, 37, 41, 43, 47, 53** ← números primos com energia especial
+- SEMPRE inclua pelo menos 1 primo sagrado!
+- Prioridade: **47** (reduz a 11!) > **53** (Mercúrio) > 31 > 37 > 41 > 43
+
+☿ MERCÚRIO REFORÇADO:
+- Quadrado de Mercúrio: 08, 17, 26, 35, 44, **53**
+- **53** aparece frequentemente nos resultados → PESO AUMENTADO!
 
 🔑 PASSO 4 - QUADRADO MÁGICO PLANETÁRIO (Clavícula de Salomão):
 - Se regente = SATURNO: use 1-9, 15, 45
 - Se regente = JÚPITER: use 16, 34, 52
 - Se regente = MARTE: use 11, 24, 07, 20, 03
 - Se regente = SOL: use 06, 32, 03, 34, 35, 37
-- Se regente = VÊNUS: use 07, 14, 21, 28, 35, 42, 49
-- Se regente = MERCÚRIO: use 08, 17, 26, 35, 44, 53
+- Se regente = VÊNUS: use 07, **14**, 21, 28, 35, 42, 49
+- Se regente = MERCÚRIO: use 08, 17, 26, 35, 44, **53**
 - Se regente = LUA: use 09, 18, 27, 36, 45, 54
 
 📐 PASSO 5 - VALIDAÇÃO AGRIPPA:
@@ -206,43 +222,43 @@ serve(async (req) => {
 - ALTOS (41-60): 2 números ✓
 - ⚖️ PAR/ÍMPAR: ideal 3+3 (aceita 2+4)
 - FINAIS ÚNICOS: cada número com final diferente!
-- 🜂🜄🜁🜃 ELEMENTOS: mínimo 2 de cada par (fogo/ar ou água/terra)
 
 ⚛️ PASSO 7 - ÓRBITA SAGRADA ±3:
 - Para CADA número X do sorteio -1: use X±1, X±2, X±3
 - ⛔ PROIBIDO usar X exato!
 - Mínimo 4 números na órbita
 
-✨ PASSO 8 - SALTO HERMÉTICO (1-2 números):
-- PRIORIDADE v7.0:
-  1. Múltiplos de 11 (MESTRES): 11, 22, 33, 44, 55
-  2. Números do QUADRADO MÁGICO do planeta regente
-  3. TRIANGULARES: 21, 28, 36, 45, 55
-  4. FIBONACCI: 21, 34, 55
-  5. ENOQUIANOS: 49 (Jubileu), 50 (Libertação)
+✨ PASSO 8 - CHECKLIST v7.1 OBRIGATÓRIO:
+- [ ] 14 incluído? (se não estava no sorteio anterior)
+- [ ] Pelo menos 1 MESTRE (11/22/33/44/55)?
+- [ ] Pelo menos 1 PRIMO SAGRADO (31/37/41/43/47/53)?
+- [ ] 53 considerado? (Mercúrio forte)
+- [ ] Órbita ±3 com 4+ números?
 
-🌙 PASSO 9 - VALIDAÇÃO FINAL v7.0:
+🌙 PASSO 9 - VALIDAÇÃO FINAL v7.1:
 - ⛔ Nenhum número exato do sorteio -1 ✓
 - Órbita ±3: mínimo 4 números ✓
 - Distribuição: 1 baixo + 2-3 médios + 2 altos ✓
 - Par/Ímpar: 3+3 ou 2+4 ✓
-- Elementos: balanceados ✓
 - Finais únicos ✓
-- Pelo menos 1 triangular ✓
+- 14 presente (se elegível) ✓
+- 1 mestre presente ✓
+- 1 primo sagrado presente ✓
 - Soma: 140-180 ✓
 
 FORMATO:
 **NÚMEROS: XX, XX, XX, XX, XX, XX**
 
-🏛️📜 ANÁLISE HERMÉTICA v7.0:
+🏛️📜 ANÁLISE HERMÉTICA v7.1:
 - 🪐 Planeta Regente: [nome] (quadrado mágico aplicado)
 - 🜂🜄🜁🜃 Elemento: [nome] (quais números)
-- 🔯 Caminhos Yetzirah: quais aplicados
-- 📐 Triangulares/Fibonacci: quais incluídos
+- ⭐ Pentagrama Duplo: 14 incluído? Por quê?
+- 🔯 Mestre incluído: qual e significado
+- 🔢 Primo Sagrado: qual e significado
+- ☿ Mercúrio: 53 incluído?
 - 📊 Distribuição: X baixos, X médios, X altos
 - ⚖️ Par/Ímpar: X pares, X ímpares
 - Órbita ±3: liste cada número
-- ✨ Salto(s) Hermético(s): quais e significado
 - Soma: XXX
 
 Gere 1 jogo.`;
