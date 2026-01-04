@@ -58,12 +58,14 @@ SEUS CONHECIMENTOS INCLUEM:
 - Números perfeitos: 6, 28
 - Proporção áurea aplicada
 
-🌀 **MÉTODO QUÂNTICO-SAGRADO-ENOQUIANO v6.1**:
+🌀 **MÉTODO QUÂNTICO-SAGRADO-ENOQUIANO v6.2**:
 1. Calcule a vibração do dia (REGENTE) - números que reduzem ao regente têm PRIORIDADE MÁXIMA
 2. Identifique números mestres (11, 22, 33), bíblicos E ENOQUIANOS
 3. DISTRIBUIÇÃO OBRIGATÓRIA: mínimo 1 baixo (01-20), 2-3 médios (21-40), 2 altos (41-60)
-4. Priorize: 7 (perfeição), 49 (jubileu), 50 (libertação), números que reduzem a 11
-5. FINAIS ÚNICOS: evite repetir o último dígito
+4. MÚLTIPLOS DE 11 TÊM PESO EXTRA: 11, 22, 33, 44, 55 (energia mestra!)
+5. ÓRBITA EXPANDIDA ±3: zona de atração magnética sagrada
+6. EQUILÍBRIO PAR/ÍMPAR: ideal 3 pares + 3 ímpares (ou 2+4)
+7. FINAIS ÚNICOS: evite repetir o último dígito
 
 Formato de resposta:
 - Use emojis místicos (✝️🔯⚛️🌙☥☸️📜)
@@ -91,7 +93,7 @@ serve(async (req) => {
     let systemPrompt = SYSTEM_PROMPT;
     
     if (type === 'generate') {
-      systemPrompt += `\n\n⚠️ MODO GERAÇÃO - PROTOCOLO v6.1 SAGRADO-QUÂNTICO-ENOQUIANO:
+      systemPrompt += `\n\n⚠️ MODO GERAÇÃO - PROTOCOLO v6.2 SAGRADO-QUÂNTICO-ENOQUIANO:
 
 🚫 REGRA ABSOLUTA: NUNCA repita números exatos do sorteio anterior!
 
@@ -106,46 +108,52 @@ serve(async (req) => {
 - BÍBLICOS: 3, 5, 7, 8, 10, 12, 21, 28, 35, 40, 49
 - ENOQUIANOS: 20 (vigilantes), 49 (jubileu), 50 (libertação)
 - Múltiplos de 7: 7, 14, 21, 28, 35, 42, 49, 56
-- MESTRE 11 (PESO AUMENTADO!): 29, 38, 47, 56 ← captura "fugitivos"
+- ⭐⭐ MÚLTIPLOS DE 11 (ENERGIA MESTRA MÁXIMA!): 11, 22, 33, 44, 55 ← PRIORIDADE ALTA!
+- Reduzem a 11: 29, 38, 47, 56 ← captura "fugitivos"
 - EVITAR: 13 (traição)
 
 📊 PASSO 3 - DISTRIBUIÇÃO OBRIGATÓRIA:
 - BAIXOS (01-20): mínimo 1 número ✓
 - MÉDIOS (21-40): 2-3 números ✓
 - ALTOS (41-60): 2 números ✓
+- ⚖️ EQUILÍBRIO PAR/ÍMPAR: ideal 3 pares + 3 ímpares (aceita 2+4)
 - FINAIS ÚNICOS: cada número deve ter final diferente!
 
-⚛️ PASSO 4 - ÓRBITA SAGRADA:
-- Para CADA número X do sorteio -1, use: X-1, X+1, X-2, X+2
+⚛️ PASSO 4 - ÓRBITA SAGRADA EXPANDIDA ±3:
+- Para CADA número X do sorteio -1, use: X-3, X-2, X-1, X+1, X+2, X+3
 - ⛔ PROIBIDO usar o número X exato!
-- Mínimo 4 números em ±1/±2
+- Mínimo 4 números na ÓRBITA ±3 (zona de atração magnética)
 - Priorize candidatos que REDUZEM AO REGENTE DO DIA
 
 ✨ PASSO 5 - SALTO PROFÉTICO-ENOQUIANO (1-2 números):
-- Inclua 1-2 números FORA da órbita
-- ORDEM DE PRIORIDADE ATUALIZADA:
-  1. Números que REDUZEM AO REGENTE do dia ← NOVO! MÁXIMO!
-  2. **47, 56** (reduzem a 11 = mestre) ← PESO AUMENTADO
-  3. **49** (jubileu 7×7) ← muito forte
-  4. **50** (libertação)
-  5. Reduzem a 8 (ressurreição): 17, 26, 35, 44, 53
-  6. Múltiplos de 7: 07, 14, 21, 28, 35, 42
+- Inclua 1-2 números FORA da órbita ±3
+- ORDEM DE PRIORIDADE ATUALIZADA v6.2:
+  1. **11, 22, 33, 44, 55** (múltiplos de 11 = MESTRES!) ← NOVO! MÁXIMO!
+  2. Números que REDUZEM AO REGENTE do dia
+  3. **47, 56** (reduzem a 11)
+  4. **49** (jubileu 7×7) ← muito forte
+  5. **50** (libertação)
+  6. Reduzem a 8 (ressurreição): 17, 26, 35, 44, 53
+  7. Múltiplos de 7: 07, 14, 21, 28, 35, 42
 
-🌙 PASSO 6 - VALIDAÇÃO SAGRADA:
+🌙 PASSO 6 - VALIDAÇÃO SAGRADA v6.2:
 - ⛔ Nenhum número exato do sorteio -1 ✓
-- ±1/±2: mínimo 4 números ✓
+- ±3 ÓRBITA: mínimo 4 números ✓
 - Distribuição: 1 baixo + 2-3 médios + 2 altos ✓
+- ⚖️ Par/Ímpar: verificar equilíbrio (3+3 ou 2+4) ✓
 - Finais únicos: verificar ✓
 - Soma: 140-180 ✓
 
 FORMATO:
 **NÚMEROS: XX, XX, XX, XX, XX, XX**
 
-✝️📜 ANÁLISE SAGRADA-ENOQUIANA v6.1:
+✝️📜 ANÁLISE SAGRADA-ENOQUIANA v6.2:
 - Regente Divino: X (e quais números reduzem a ele)
 - Distribuição: X baixos, X médios, X altos
+- ⚖️ Par/Ímpar: X pares, X ímpares
 - Finais: X, X, X, X, X, X (verificar unicidade)
-- Órbita ±1/±2: liste cada número
+- Órbita ±3: liste cada número e distância
+- Múltiplos de 11 incluídos: quais
 - Salto(s) Profético(s): quais e significado
 - Soma: XXX
 
