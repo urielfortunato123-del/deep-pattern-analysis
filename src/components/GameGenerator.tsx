@@ -137,40 +137,40 @@ DADOS DE ENTRADA:
 - Sorteio anterior (-1): ${previousNumbers.map((n) => formatNumber(parseInt(n))).join(", ")}${extraDraws}
 - Data alvo: ${nextDrawDate}
 
-⚛️ METODOLOGIA QUÂNTICA AVANÇADA v3.0:
+⚛️ METODOLOGIA QUÂNTICA v3.2 - ÓRBITA APERTADA:
 
-1. **ANÁLISE DE ÓRBITA MULTI-SORTEIO (CRÍTICO)**
-   Para CADA número do sorteio -1, gere candidatos em X±1, X±2, X±3.
-   NUNCA repita os números exatos dos sorteios anteriores.
-   ${extraDraws ? `Se houver -2 e -3, identifique números "quentes" que repetem e "gaps" que não saem há tempo.` : ""}
+1. **ÓRBITA PRIORITÁRIA ±1 e ±2 (CRÍTICO)**
+   Para CADA número X do sorteio -1, PRIORIZE: X-1, X+1, X-2, X+2
+   Use ±3 APENAS se necessário para completar.
+   NUNCA repita números exatos do sorteio anterior.
+   ${extraDraws ? `Se houver -2 e -3, identifique números "quentes" e "gaps".` : ""}
 
-2. **REGRA DE ÓRBITA ESTRITA**
-   PELO MENOS 5 dos ${game.numbersCount} números DEVEM estar a ±3 de algum número do sorteio -1.
-   Exemplo: se saiu 22, use 19, 20, 21, 23, 24, 25 (NÃO 22).
+2. **REGRA DE PROXIMIDADE MÁXIMA**
+   - PELO MENOS 4 números em ±1 ou ±2 do sorteio -1
+   - Máximo 2 números em ±3
+   - TOTAL: 6/6 devem estar em alguma órbita
 
-3. **DISTRIBUIÇÃO PERFEITA**
-   - 5-6 faixas decimais diferentes
+3. **DISTRIBUIÇÃO**
+   - 5-6 faixas decimais
    - 3 pares + 3 ímpares
-   - TODOS finais ÚNICOS
-   - ZERO sequências consecutivas
+   - Finais únicos
+   - Zero consecutivos
 
-4. **NÚMEROS ANTI-REBANHO**
-   EVITE: 7, 13, 21, 33, 1, 2, 59, 60
-   PREFIRA: 38, 41, 43, 47, 52, 56, 58
+4. **ANTI-REBANHO**: Evite 7,13,21,33. Prefira 38,41,43,47,52,56,58
 
-5. **SOMA IDEAL**: 140-180
+5. **SOMA**: 140-180
 
-6. **VALIDAÇÃO**
-   CONTE quantos estão a ±3 do sorteio -1. Se <5, REFAÇA.
+6. **VALIDAÇÃO FINAL**
+   Conte quantos estão a ±1 ou ±2. Se <4, REFAÇA.
 
 FORMATO:
 **NÚMEROS: XX, XX, XX, XX, XX, XX**
 
-ANÁLISE (150 palavras):
-- Órbita ±3: X/6
-- Finais únicos: ✓
+ANÁLISE:
+- Órbita ±1: X números
+- Órbita ±2: X números  
+- Órbita ±3: X números
 - Soma: XXX
-- Otimização: XX%
 
 ⚠️ Análise probabilística.`;
 
