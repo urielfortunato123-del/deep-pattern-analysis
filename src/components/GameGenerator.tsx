@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Calendar, Sparkles, Loader2, ArrowRight, AlertTriangle, Save } from "lucide-react";
+import { Calendar, Sparkles, Loader2, ArrowRight, AlertTriangle, Save, ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -27,16 +27,47 @@ export const GameGenerator = ({ game }: GameGeneratorProps) => {
   const [previousNumbers, setPreviousNumbers] = useState<string[]>(
     Array(game.numbersCount).fill("")
   );
+  const [previousNumbers2, setPreviousNumbers2] = useState<string[]>(
+    Array(game.numbersCount).fill("")
+  );
+  const [previousNumbers3, setPreviousNumbers3] = useState<string[]>(
+    Array(game.numbersCount).fill("")
+  );
+  const [showExtraDraws, setShowExtraDraws] = useState(false);
   const [nextDrawDate, setNextDrawDate] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [result, setResult] = useState<GeneratedResult | null>(null);
 
-  const handleNumberChange = (index: number, value: string) => {
+  const handleNumberChange = (index: number, value: string, drawIndex: number = 1) => {
     const num = value.replace(/\D/g, "").slice(0, game.maxNumber >= 100 ? 3 : 2);
-    const newNumbers = [...previousNumbers];
-    newNumbers[index] = num;
-    setPreviousNumbers(newNumbers);
+    if (drawIndex === 1) {
+      const newNumbers = [...previousNumbers];
+      newNumbers[index] = num;
+      setPreviousNumbers(newNumbers);
+    } else if (drawIndex === 2) {
+      const newNumbers = [...previousNumbers2];
+      newNumbers[index] = num;
+      setPreviousNumbers2(newNumbers);
+    } else {
+      const newNumbers = [...previousNumbers3];
+      newNumbers[index] = num;
+      setPreviousNumbers3(newNumbers);
+    }
+  };
+
+  const getExtraDrawsData = () => {
+    const draw2Filled = previousNumbers2.every((n) => n !== "" && parseInt(n) >= game.minNumber && parseInt(n) <= game.maxNumber);
+    const draw3Filled = previousNumbers3.every((n) => n !== "" && parseInt(n) >= game.minNumber && parseInt(n) <= game.maxNumber);
+    
+    let extraData = "";
+    if (draw2Filled) {
+      extraData += `\n- Sorteio anterior (-2): ${previousNumbers2.map((n) => formatNumber(parseInt(n))).join(", ")}`;
+    }
+    if (draw3Filled) {
+      extraData += `\n- Sorteio anterior (-3): ${previousNumbers3.map((n) => formatNumber(parseInt(n))).join(", ")}`;
+    }
+    return extraData;
   };
 
   const isValidInput = () => {
@@ -94,6 +125,8 @@ export const GameGenerator = ({ game }: GameGeneratorProps) => {
     setIsLoading(true);
     setResult(null);
 
+    const extraDraws = getExtraDrawsData();
+    
     const prompt = `TAREFA: Gerar ${game.numbersCount} números ALTAMENTE OTIMIZADOS para a ${game.name}.
 
 REGRAS DO JOGO ${game.name.toUpperCase()}:
@@ -101,57 +134,45 @@ REGRAS DO JOGO ${game.name.toUpperCase()}:
 - Faixa: ${game.minNumber} a ${game.maxNumber}
 
 DADOS DE ENTRADA:
-- Sorteio anterior: ${previousNumbers.map((n) => formatNumber(parseInt(n))).join(", ")}
+- Sorteio anterior (-1): ${previousNumbers.map((n) => formatNumber(parseInt(n))).join(", ")}${extraDraws}
 - Data alvo: ${nextDrawDate}
 
-⚛️ METODOLOGIA QUÂNTICA AVANÇADA v2.0:
+⚛️ METODOLOGIA QUÂNTICA AVANÇADA v3.0:
 
-1. **ANÁLISE DE ÓRBITA (CRÍTICO)**
-   Para CADA número do sorteio anterior, calcule a "zona de influência":
-   - Número X → gere candidatos em X±1, X±2, X±3 (prioridade máxima)
-   - Número X → considere também X±4 a X±6 (prioridade média)
-   - NUNCA repita o número exato do sorteio anterior
-   - Exemplo prático: se saiu 22, priorize 19, 20, 21, 23, 24, 25
+1. **ANÁLISE DE ÓRBITA MULTI-SORTEIO (CRÍTICO)**
+   Para CADA número do sorteio -1, gere candidatos em X±1, X±2, X±3.
+   NUNCA repita os números exatos dos sorteios anteriores.
+   ${extraDraws ? `Se houver -2 e -3, identifique números "quentes" que repetem e "gaps" que não saem há tempo.` : ""}
 
-2. **DISTRIBUIÇÃO PERFEITA**
-   - Cobrir EXATAMENTE 5 ou 6 faixas decimais diferentes
-   - Equilíbrio: ${Math.floor(game.numbersCount/2)} pares + ${Math.ceil(game.numbersCount/2)} ímpares (ou vice-versa)
-   - TODOS os finais devem ser ÚNICOS (0-9, sem repetição)
-   - ZERO sequências consecutivas (12-13 ou 45-46 = proibido)
+2. **REGRA DE ÓRBITA ESTRITA**
+   PELO MENOS 5 dos ${game.numbersCount} números DEVEM estar a ±3 de algum número do sorteio -1.
+   Exemplo: se saiu 22, use 19, 20, 21, 23, 24, 25 (NÃO 22).
 
-3. **NÚMEROS ANTI-REBANHO**
-   EVITE (muito apostados):
-   - Supersticiosos: 7, 13, 21, 33
-   - Extremos: 1, 2, 59, 60
-   - Datas: 01 a 31 (aniversários)
-   
-   PREFIRA (pouco apostados):
-   - "Feios": 38, 41, 43, 47, 52, 56, 58
-   - Primos altos: 37, 41, 43, 47, 53
-   - Dezena 40-50 (menos popular)
+3. **DISTRIBUIÇÃO PERFEITA**
+   - 5-6 faixas decimais diferentes
+   - 3 pares + 3 ímpares
+   - TODOS finais ÚNICOS
+   - ZERO sequências consecutivas
 
-4. **SOMA IDEAL**
-   - Mega-Sena: soma entre 140-180 (média histórica ~167)
-   - Evite extremos (<120 ou >210)
+4. **NÚMEROS ANTI-REBANHO**
+   EVITE: 7, 13, 21, 33, 1, 2, 59, 60
+   PREFIRA: 38, 41, 43, 47, 52, 56, 58
 
-5. **VALIDAÇÃO FINAL**
-   Antes de responder, VERIFIQUE:
-   ✓ Todos os finais são diferentes?
-   ✓ Nenhuma sequência consecutiva?
-   ✓ Pelo menos 4 números estão na órbita (±3) do sorteio anterior?
-   ✓ Soma está entre 140-180?
-   ✓ Tem números da dezena 40-50?
+5. **SOMA IDEAL**: 140-180
 
-FORMATO OBRIGATÓRIO:
+6. **VALIDAÇÃO**
+   CONTE quantos estão a ±3 do sorteio -1. Se <5, REFAÇA.
+
+FORMATO:
 **NÚMEROS: XX, XX, XX, XX, XX, XX**
 
-ANÁLISE (máx 250 palavras):
-- Quantos números estão na órbita ±3 do anterior
-- Distribuição por faixas
-- Finais únicos confirmados
-- Índice de otimização (%)
+ANÁLISE (150 palavras):
+- Órbita ±3: X/6
+- Finais únicos: ✓
+- Soma: XXX
+- Otimização: XX%
 
-⚠️ Análise probabilística, não previsão garantida.`;
+⚠️ Análise probabilística.`;
 
     try {
       const resp = await fetch(CHAT_URL, {
@@ -274,7 +295,7 @@ ANÁLISE (máx 250 palavras):
               type="text"
               inputMode="numeric"
               value={num}
-              onChange={(e) => handleNumberChange(index, e.target.value)}
+              onChange={(e) => handleNumberChange(index, e.target.value, 1)}
               placeholder={`${index + 1}`}
               className={cn(
                 "text-center font-mono bg-muted/20 border-border/30",
@@ -285,6 +306,66 @@ ANÁLISE (máx 250 palavras):
             />
           ))}
         </div>
+        
+        {/* Toggle Extra Draws */}
+        <Button
+          type="button"
+          variant="ghost"
+          size="sm"
+          onClick={() => setShowExtraDraws(!showExtraDraws)}
+          className="text-muted-foreground hover:text-foreground"
+        >
+          {showExtraDraws ? <ChevronUp className="w-4 h-4 mr-1" /> : <ChevronDown className="w-4 h-4 mr-1" />}
+          {showExtraDraws ? "Ocultar sorteios extras" : "Adicionar mais sorteios (opcional)"}
+        </Button>
+
+        {/* Extra Draws */}
+        {showExtraDraws && (
+          <div className="space-y-4 p-4 rounded-lg bg-muted/10 border border-border/20">
+            {/* Draw -2 */}
+            <div className="space-y-2">
+              <Label className="text-sm text-muted-foreground">Sorteio Anterior (-2) - Opcional</Label>
+              <div className="flex flex-wrap gap-2">
+                {previousNumbers2.map((num, index) => (
+                  <Input
+                    key={`d2-${index}`}
+                    type="text"
+                    inputMode="numeric"
+                    value={num}
+                    onChange={(e) => handleNumberChange(index, e.target.value, 2)}
+                    placeholder={`${index + 1}`}
+                    className="w-12 h-10 text-sm text-center font-mono bg-muted/20 border-border/30 focus:border-gold/50"
+                    maxLength={game.maxNumber >= 100 ? 3 : 2}
+                  />
+                ))}
+              </div>
+            </div>
+            
+            {/* Draw -3 */}
+            <div className="space-y-2">
+              <Label className="text-sm text-muted-foreground">Sorteio Anterior (-3) - Opcional</Label>
+              <div className="flex flex-wrap gap-2">
+                {previousNumbers3.map((num, index) => (
+                  <Input
+                    key={`d3-${index}`}
+                    type="text"
+                    inputMode="numeric"
+                    value={num}
+                    onChange={(e) => handleNumberChange(index, e.target.value, 3)}
+                    placeholder={`${index + 1}`}
+                    className="w-12 h-10 text-sm text-center font-mono bg-muted/20 border-border/30 focus:border-gold/50"
+                    maxLength={game.maxNumber >= 100 ? 3 : 2}
+                  />
+                ))}
+              </div>
+            </div>
+            
+            <p className="text-xs text-muted-foreground">
+              Adicionar mais sorteios melhora a análise de tendências e gaps.
+            </p>
+          </div>
+        )}
+        
         <p className="text-xs text-muted-foreground">
           {game.description}, sem repetição
         </p>
