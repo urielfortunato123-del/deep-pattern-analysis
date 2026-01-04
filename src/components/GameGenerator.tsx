@@ -94,7 +94,7 @@ export const GameGenerator = ({ game }: GameGeneratorProps) => {
     setIsLoading(true);
     setResult(null);
 
-    const prompt = `TAREFA: Gerar ${game.numbersCount} números para a ${game.name} com análise completa.
+    const prompt = `TAREFA: Gerar ${game.numbersCount} números OTIMIZADOS para a ${game.name} com análise completa.
 
 REGRAS DO JOGO ${game.name.toUpperCase()}:
 - Quantidade de números: ${game.numbersCount}
@@ -105,19 +105,44 @@ DADOS DE ENTRADA:
 - Números do sorteio anterior: ${previousNumbers.map((n) => formatNumber(parseInt(n))).join(", ")}
 - Data do próximo sorteio: ${nextDrawDate}
 
-METODOLOGIA OBRIGATÓRIA:
-1. ANÁLISE ESTATÍSTICA: Identifique gaps, números atrasados, padrões de distribuição específicos da ${game.name}
-2. CABALA NUMEROLÓGICA: Reduza a data do próximo sorteio, encontre arquétipos dominantes
-3. MAPA ASTRAL: Considere a posição simbólica dos planetas na data
-4. LÓGICA QUÂNTICA: Evite padrões óbvios, sequências longas, concentrações
+⚛️ METODOLOGIA QUÂNTICA OTIMIZADA:
+
+1. DISTRIBUIÇÃO ANTI-PADRÃO (CRÍTICO):
+   - Cobrir TODAS as faixas decimais (01-10, 11-20, 21-30, etc.)
+   - Equilibrar pares/ímpares (ideal: ${Math.floor(game.numbersCount/2)}/${Math.ceil(game.numbersCount/2)} ou ${Math.ceil(game.numbersCount/2)}/${Math.floor(game.numbersCount/2)})
+   - EVITAR finais repetidos (ex: 05, 15, 25 = ruim)
+   - EVITAR sequências consecutivas (ex: 12, 13, 14 = muito apostado)
+   - Priorizar números com FINAIS ÚNICOS
+
+2. ANÁLISE DE PROXIMIDADE:
+   - Analisar cada número do sorteio anterior
+   - Gerar números que orbitem ±3 a ±7 de cada número anterior
+   - Exemplo: se saiu 22, considerar 17, 18, 19, 25, 26, 27, 28, 29
+   - NÃO repetir os mesmos números do sorteio anterior
+
+3. EVITAR NÚMEROS POPULARES:
+   - Evitar: 7, 13, 21, 33 (superstição)
+   - Evitar: 1, 60 (extremos)
+   - Evitar: datas de aniversário (01-31 concentram apostas)
+   - Preferir números "feios": 38, 41, 47, 52, 56, 58
+
+4. CABALA NUMEROLÓGICA:
+   - Reduzir data do sorteio (${nextDrawDate}) ao número raiz
+   - Incluir números que vibrem nessa frequência
+
+5. SOMA TOTAL:
+   - A soma dos ${game.numbersCount} números deve estar entre 120-200 (Mega-Sena)
+   - Evitar somas extremas (muito baixas ou muito altas)
 
 FORMATO DE RESPOSTA OBRIGATÓRIO:
 Primeiro, liste os ${game.numbersCount} números escolhidos no formato: **NÚMEROS: XX, XX, XX, ...**
 
 Depois, dê uma análise CONCISA (máximo 300 palavras) explicando:
-- Lógica geral da escolha
-- 2-3 números mais importantes e por quê
-- Índice de coerência simbólico (ex: 78%)
+- Lógica de PROXIMIDADE com sorteio anterior
+- Distribuição por faixas
+- Equilíbrio pares/ímpares
+- Por que esses números são ANTI-PADRÃO (menos apostados)
+- Índice de otimização (ex: 85%)
 
 Termine com aviso de que é análise simbólica, não previsão garantida.`;
 
