@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Calendar, Sparkles, Loader2, ArrowRight, AlertTriangle, Save, ChevronDown, ChevronUp } from "lucide-react";
+import { Calendar, Sparkles, Loader2, ArrowRight, AlertTriangle, Save, ChevronDown, ChevronUp, Layers } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -13,6 +13,8 @@ import { supabase } from "@/integrations/supabase/client";
 interface GeneratedResult {
   numbers: number[];
   analysis: string;
+  isHybrid?: boolean;
+  sourceGames?: number[][];
 }
 
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/quantum-oracle`;
@@ -36,8 +38,10 @@ export const GameGenerator = ({ game }: GameGeneratorProps) => {
   const [showExtraDraws, setShowExtraDraws] = useState(false);
   const [nextDrawDate, setNextDrawDate] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingHybrid, setIsLoadingHybrid] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [result, setResult] = useState<GeneratedResult | null>(null);
+  const [hybridProgress, setHybridProgress] = useState(0);
 
   const handleNumberChange = (index: number, value: string, drawIndex: number = 1) => {
     const num = value.replace(/\D/g, "").slice(0, game.maxNumber >= 100 ? 3 : 2);
@@ -295,6 +299,192 @@ FORMATO:
     }
   };
 
+  const generateSingleGame = async (): Promise<number[]> => {
+    const extraDraws = getExtraDrawsData();
+    
+    const prompt = `TAREFA: Gerar ${game.numbersCount} números para a ${game.name}.
+
+REGRAS: ${game.numbersCount} números de ${game.minNumber} a ${game.maxNumber}
+
+DADOS:
+- Sorteio anterior: ${previousNumbers.map((n) => formatNumber(parseInt(n))).join(", ")}${extraDraws}
+- Data alvo: ${nextDrawDate}
+
+Gere números seguindo a metodologia quântica-hermética. Retorne APENAS no formato:
+**NÚMEROS: XX, XX, XX, XX, XX, XX**`;
+
+    const resp = await fetch(CHAT_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+      },
+      body: JSON.stringify({
+        messages: [{ role: "user", content: prompt }],
+        type: "generate",
+      }),
+    });
+
+    if (!resp.ok) throw new Error("Erro ao gerar");
+    if (!resp.body) throw new Error("Sem resposta");
+
+    const reader = resp.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = "";
+    let fullResponse = "";
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buffer += decoder.decode(value, { stream: true });
+
+      let newlineIndex: number;
+      while ((newlineIndex = buffer.indexOf("\n")) !== -1) {
+        let line = buffer.slice(0, newlineIndex);
+        buffer = buffer.slice(newlineIndex + 1);
+        if (line.endsWith("\r")) line = line.slice(0, -1);
+        if (!line.startsWith("data: ")) continue;
+        const jsonStr = line.slice(6).trim();
+        if (jsonStr === "[DONE]") break;
+        try {
+          const parsed = JSON.parse(jsonStr);
+          const content = parsed.choices?.[0]?.delta?.content;
+          if (content) fullResponse += content;
+        } catch {
+          buffer = line + "\n" + buffer;
+          break;
+        }
+      }
+    }
+
+    const numbersMatch = fullResponse.match(/\*\*NÚMEROS:\s*([\d,\s]+)\*\*/i);
+    if (numbersMatch) {
+      return numbersMatch[1]
+        .split(",")
+        .map((n) => parseInt(n.trim()))
+        .filter((n) => !isNaN(n) && n >= game.minNumber && n <= game.maxNumber)
+        .slice(0, game.numbersCount);
+    }
+    
+    const regex = /\b(\d{1,2})\b/g;
+    const allNumbers = fullResponse.match(regex);
+    if (allNumbers) {
+      return [...new Set(allNumbers.map((n) => parseInt(n)))]
+        .filter((n) => n >= game.minNumber && n <= game.maxNumber)
+        .slice(0, game.numbersCount);
+    }
+    
+    return [];
+  };
+
+  const generateHybridGame = async () => {
+    if (!isValidInput()) {
+      toast({
+        title: "Dados incompletos",
+        description: `Preencha todos os ${game.numbersCount} números e a data.`,
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsLoadingHybrid(true);
+    setHybridProgress(0);
+    setResult(null);
+
+    try {
+      const games: number[][] = [];
+      
+      // Generate 3 games
+      for (let i = 0; i < 3; i++) {
+        setHybridProgress(i + 1);
+        const nums = await generateSingleGame();
+        if (nums.length === game.numbersCount) {
+          games.push(nums);
+        }
+        // Small delay between requests
+        if (i < 2) await new Promise(r => setTimeout(r, 500));
+      }
+
+      if (games.length < 2) {
+        throw new Error("Não foi possível gerar jogos suficientes");
+      }
+
+      // Count frequency of each number
+      const frequency: Record<number, number> = {};
+      games.flat().forEach(n => {
+        frequency[n] = (frequency[n] || 0) + 1;
+      });
+
+      // Calculate day regent
+      const dateDigits = nextDrawDate.replace(/-/g, "").split("").map(Number);
+      let regentSum = dateDigits.reduce((a, b) => a + b, 0);
+      while (regentSum > 9 && regentSum !== 11 && regentSum !== 22 && regentSum !== 33) {
+        regentSum = regentSum.toString().split("").map(Number).reduce((a, b) => a + b, 0);
+      }
+
+      // Score each number
+      const scored = Object.entries(frequency).map(([numStr, freq]) => {
+        const num = parseInt(numStr);
+        let score = freq * 10; // Base score from frequency
+        
+        // Bonus for reducing to regent
+        let reduced = num;
+        while (reduced > 9) {
+          reduced = reduced.toString().split("").map(Number).reduce((a, b) => a + b, 0);
+        }
+        if (reduced === regentSum) score += 5;
+        
+        // Sacred numbers bonus
+        if ([33, 49, 50, 55].includes(num)) score += 3;
+        if ([7, 14, 21, 28, 35, 42].includes(num)) score += 2; // Multiples of 7
+        if (reduced === 11 || reduced === 22) score += 4; // Master numbers
+        
+        return { num, score, freq };
+      });
+
+      // Sort by score and take top numbers
+      scored.sort((a, b) => b.score - a.score);
+      const hybridNumbers = scored
+        .slice(0, game.numbersCount)
+        .map(s => s.num)
+        .sort((a, b) => a - b);
+
+      // Generate analysis
+      const analysis = `🔮 **JOGO HÍBRIDO QUÂNTICO**
+
+📊 **Jogos base analisados:**
+${games.map((g, i) => `• Jogo ${i + 1}: ${g.map(n => formatNumber(n)).join(", ")}`).join("\n")}
+
+📅 **Regente Divino:** ${regentSum} (soma dos dígitos de ${nextDrawDate})
+
+🏆 **Frequência das âncoras:**
+${scored.slice(0, 8).map(s => `• ${formatNumber(s.num)}: ${s.freq}/3 jogos (score: ${s.score})`).join("\n")}
+
+✨ **Números selecionados:** ${hybridNumbers.map(n => formatNumber(n)).join(", ")}
+
+⚛️ Este jogo combina as âncoras mais consistentes das 3 gerações quânticas, priorizando números que reduzem ao Regente ${regentSum} e símbolos sagrados.`;
+
+      setResult({
+        numbers: hybridNumbers,
+        analysis,
+        isHybrid: true,
+        sourceGames: games,
+      });
+
+      toast({ title: "Jogo Híbrido gerado! 🔮" });
+    } catch (error) {
+      console.error("Hybrid generation error:", error);
+      toast({
+        title: "Erro",
+        description: error instanceof Error ? error.message : "Falha ao gerar jogo híbrido",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoadingHybrid(false);
+      setHybridProgress(0);
+    }
+  };
+
   const isLargeGame = game.numbersCount > 10;
 
   return (
@@ -412,28 +602,48 @@ FORMATO:
         </div>
       </div>
 
-      {/* Generate Button */}
-      <Button
-        onClick={generateNumbers}
-        disabled={isLoading || !isValidInput()}
-        className={cn(
-          "w-full h-12 font-semibold text-lg shadow-lg",
-          `bg-gradient-to-r ${game.color} hover:opacity-90 text-white`
-        )}
-      >
-        {isLoading ? (
-          <>
-            <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-            Processando campo quântico...
-          </>
-        ) : (
-          <>
-            <Sparkles className="w-5 h-5 mr-2" />
-            Gerar Jogo
-            <ArrowRight className="w-5 h-5 ml-2" />
-          </>
-        )}
-      </Button>
+      {/* Generate Buttons */}
+      <div className="flex flex-col sm:flex-row gap-3">
+        <Button
+          onClick={generateNumbers}
+          disabled={isLoading || isLoadingHybrid || !isValidInput()}
+          className={cn(
+            "flex-1 h-12 font-semibold text-base shadow-lg",
+            `bg-gradient-to-r ${game.color} hover:opacity-90 text-white`
+          )}
+        >
+          {isLoading ? (
+            <>
+              <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+              Processando...
+            </>
+          ) : (
+            <>
+              <Sparkles className="w-5 h-5 mr-2" />
+              Gerar Jogo
+            </>
+          )}
+        </Button>
+        
+        <Button
+          onClick={generateHybridGame}
+          disabled={isLoading || isLoadingHybrid || !isValidInput()}
+          variant="outline"
+          className="flex-1 h-12 font-semibold text-base border-cosmic-purple/50 text-cosmic-purple hover:bg-cosmic-purple/10"
+        >
+          {isLoadingHybrid ? (
+            <>
+              <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+              Gerando {hybridProgress}/3...
+            </>
+          ) : (
+            <>
+              <Layers className="w-5 h-5 mr-2" />
+              Jogo Híbrido
+            </>
+          )}
+        </Button>
+      </div>
 
       {/* Results */}
       {result && (
@@ -441,10 +651,12 @@ FORMATO:
           {/* Generated Numbers */}
           <div className={cn(
             "p-6 rounded-xl border",
-            `bg-gradient-to-br ${game.color}/20 border-white/20`
+            result.isHybrid 
+              ? "bg-gradient-to-br from-cosmic-purple/20 to-gold/20 border-cosmic-purple/30"
+              : `bg-gradient-to-br ${game.color}/20 border-white/20`
           )}>
             <p className="text-sm text-muted-foreground mb-3 text-center">
-              {game.icon} Números Gerados para {game.name}
+              {result.isHybrid ? "🔮 Jogo Híbrido" : game.icon} {result.isHybrid ? "Combinação Quântica" : `Números Gerados para ${game.name}`}
             </p>
             <div className={cn(
               "flex flex-wrap justify-center gap-2",
