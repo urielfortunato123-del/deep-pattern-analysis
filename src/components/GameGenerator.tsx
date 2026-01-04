@@ -127,7 +127,7 @@ export const GameGenerator = ({ game }: GameGeneratorProps) => {
 
     const extraDraws = getExtraDrawsData();
     
-    const prompt = `TAREFA: Gerar ${game.numbersCount} números com MÁXIMA RESSONÂNCIA QUÂNTICO-CABALÍSTICA para a ${game.name}.
+    const prompt = `TAREFA: Gerar ${game.numbersCount} números com MÁXIMA RESSONÂNCIA SAGRADA para a ${game.name}.
 
 REGRAS DO JOGO ${game.name.toUpperCase()}:
 - Quantidade: ${game.numbersCount} números
@@ -137,46 +137,56 @@ DADOS DE ENTRADA:
 - Sorteio anterior (-1): ${previousNumbers.map((n) => formatNumber(parseInt(n))).join(", ")}${extraDraws}
 - Data alvo: ${nextDrawDate}
 
-⚛️🔯 METODOLOGIA QUÂNTICO-CABALÍSTICA v4.0:
+✝️🔯⚛️ METODOLOGIA SAGRADA-QUÂNTICA v5.0:
 
-📅 **1. VIBRAÇÃO DO DIA (CRÍTICO)**
+📅 **1. VIBRAÇÃO DIVINA DO DIA**
    Data: ${nextDrawDate}
-   Calcule: soma de TODOS os dígitos da data → reduza a 1 dígito (exceto 11, 22, 33)
-   Este é o NÚMERO REGENTE - priorize números que reduzem a ele!
+   Calcule: soma de TODOS os dígitos → reduza a 1 (exceto mestres 11, 22, 33)
+   Este é o NÚMERO REGENTE DIVINO do dia!
 
-🔯 **2. ANÁLISE CABALÍSTICA DO SORTEIO -1**
-   - Reduza cada número a 1-9 (ou mestre 11/22/33)
-   - Números mestres têm PESO DOBRADO nas órbitas
-   - Triangulares sagrados: 3, 6, 10, 15, 21, 28, 36, 45, 55
+✝️ **2. NÚMEROS BÍBLICOS SAGRADOS**
+   MUITO PODEROSOS (priorizar na órbita):
+   - 3 = Trindade
+   - 7 = Perfeição divina (7º dia, 7 selos, 7 trombetas)
+   - 12 = Governo divino (12 tribos, 12 apóstolos)
+   - 5 = Graça de Deus
+   - 8 = Novo começo, ressurreição
+   - 40 = Provação divina
+   ADJACENTES: 14 (7x2), 21 (7x3), 28 (7x4), 35 (7x5), 49 (7x7)
+   EVITAR: 13 (traição), 6 sozinho (homem sem Deus)
 
-⚛️ **3. ÓRBITA QUÂNTICA COM AJUSTE MÍSTICO**
+🔯 **3. ANÁLISE CABALÍSTICA**
+   - Reduza cada número do sorteio -1 a 1-9 (ou mestre)
+   - 33 = idade de Cristo = PESO MÁXIMO
+   - Números triangulares: 3, 6, 10, 15, 21, 28, 36, 45, 55
+
+⚛️ **4. ÓRBITA QUÂNTICA + SAGRADA**
    - Base: X±1, X±2 do sorteio -1 (mínimo 4 números)
-   - AJUSTE CABALÍSTICO: priorize candidatos que reduzem ao número regente do dia
-   - Exemplo: se regente = 5, priorize 05, 14, 23, 32, 41, 50
+   - PRIORIZE candidatos que são bíblicos OU reduzem ao regente
+   - Se candidato = múltiplo de 7, tem prioridade máxima!
 
-☥ **4. PADRÕES SAGRADOS**
-   - Inclua pelo menos 1 número triangular (21, 28, 36, 45, 55)
-   - Busque ressonância com 7 (perfeição divina) ou 9 (completude)
-   - O 8 é o caminho óctuplo budista - número de sorte
+☥ **5. SALTO PROFÉTICO (1 número)**
+   - Inclua 1 número FORA da órbita direta
+   - Escolha baseado em: múltiplo de 7, triangular, ou forte ressonância bíblica
+   - Ex: 47 (4+7=11 mestre), 53 (5+3=8 ressurreição)
 
-🌙 **5. VALIDAÇÃO MÍSTICA**
+🌙 **6. VALIDAÇÃO SAGRADA**
    - ±1/±2: mínimo 4 números ✓
-   - Ressonância com regente: pelo menos 2 números ✓
+   - Pelo menos 1 número bíblico poderoso ✓
    - Soma: 140-180 ✓
    - 3P/3I, finais únicos ✓
 
 FORMATO:
 **NÚMEROS: XX, XX, XX, XX, XX, XX**
 
-🔮 ANÁLISE MÍSTICA:
-- Número Regente do Dia: X (significado cabalístico)
-- Órbita ±1: X números (liste)
-- Órbita ±2: X números (liste)
-- Ressonância Cabalística: X/6 reduzem ao regente
-- Números Sagrados presentes: liste
-- Soma: XXX → reduz a Y
+✝️🔮 ANÁLISE SAGRADA:
+- Número Regente Divino: X (significado)
+- Números Bíblicos: liste quais
+- Órbita ±1/±2: X números
+- Salto Profético: qual e porquê
+- Soma: XXX → reduz a Y (significado bíblico)
 
-⚠️ Análise simbólica-probabilística.`;
+⚠️ Análise simbólica-profética.`;
 
     try {
       const resp = await fetch(CHAT_URL, {
