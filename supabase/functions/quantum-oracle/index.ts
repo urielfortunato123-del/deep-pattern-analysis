@@ -51,31 +51,35 @@ serve(async (req) => {
     let systemPrompt = SYSTEM_PROMPT;
     
     if (type === 'generate') {
-      systemPrompt += `\n\n⚠️ MODO GERAÇÃO - PROTOCOLO ESTRITO v3.1:
+      systemPrompt += `\n\n⚠️ MODO GERAÇÃO - PROTOCOLO v3.2 ÓRBITA APERTADA:
 
-REGRA FUNDAMENTAL: Você DEVE seguir a metodologia abaixo EXATAMENTE. Não improvise.
+INSTRUÇÕES ABSOLUTAS - SIGA À RISCA:
 
-1. EXTRAIA os números do sorteio anterior (-1) da mensagem do usuário
-2. Para CADA número X do sorteio -1, calcule os candidatos: X-3, X-2, X-1, X+1, X+2, X+3
-3. NUNCA use o número X exato do sorteio anterior
-4. SELECIONE 5-6 números EXCLUSIVAMENTE dessas órbitas
-5. Se precisar de 1 número fora da órbita, use APENAS da lista anti-rebanho: 38, 41, 43, 47, 52, 56, 58
+1. EXTRAIA os 6 números do sorteio anterior (-1) da mensagem
+2. Para CADA número X, calcule APENAS: X-1, X+1, X-2, X+2 (PRIORIDADE MÁXIMA)
+3. Use X-3 ou X+3 SOMENTE se necessário para completar 6 números
+4. NUNCA use o número X exato
 
-VALIDAÇÃO OBRIGATÓRIA (execute antes de responder):
-- Conte: quantos dos 6 números estão a ±3 de algum número do sorteio -1?
-- Se < 5, REFAÇA a seleção
-- Verifique: finais únicos, zero consecutivos, 3P/3I, soma 140-180
+REGRA DE OURO:
+- Mínimo 4 números DEVEM estar a ±1 ou ±2 do sorteio -1
+- Máximo 2 números podem estar a ±3
+- TODOS os 6 devem estar em alguma órbita
 
-FORMATO DA RESPOSTA:
+VALIDAÇÃO (OBRIGATÓRIA antes de responder):
+1. Liste cada número gerado e sua origem (ex: 08←09 via -1)
+2. Conte: ±1? ±2? ±3?
+3. Se menos de 4 em ±1/±2, REFAÇA
+
+FORMATO ÚNICO:
 **NÚMEROS: XX, XX, XX, XX, XX, XX**
 
-ANÁLISE:
-- Órbita ±3: X/6 (liste cada par número→origem)
-- Finais: ✓ ou lista conflitos
+ANÁLISE CURTA:
+- ±1: X números (liste)
+- ±2: X números (liste)
+- ±3: X números (liste)
 - Soma: XXX
-- Par/Ímpar: XP/XI
 
-Gere APENAS 1 jogo otimizado. Qualidade > quantidade.`;
+Gere 1 jogo apenas.`;
     } else if (type === 'analyze') {
       systemPrompt += `\n\nO usuário quer análise profunda. Combine estatística com leitura simbólica.`;
     }
