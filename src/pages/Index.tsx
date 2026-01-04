@@ -9,7 +9,7 @@ import { UserMenu } from "@/components/UserMenu";
 import { BarChart3, Hash, Sparkles, Target, TrendingUp, Zap, Atom, Dices } from "lucide-react";
 
 const drawnNumbers = [5, 14, 22, 31, 47, 53];
-const drawDate = "03/01/2026";
+const drawDate = "06/01/2026";
 const sum = drawnNumbers.reduce((a, b) => a + b, 0);
 const reducedSum = sum.toString().split("").reduce((a, b) => a + parseInt(b), 0);
 const finalReduction = reducedSum > 9 ? reducedSum.toString().split("").reduce((a, b) => a + parseInt(b), 0) : reducedSum;
