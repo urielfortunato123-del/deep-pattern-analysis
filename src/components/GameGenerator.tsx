@@ -131,79 +131,145 @@ export const GameGenerator = ({ game }: GameGeneratorProps) => {
 
     const extraDraws = getExtraDrawsData();
     
-    const prompt = `TAREFA: Gerar ${game.numbersCount} números com MÁXIMA RESSONÂNCIA SAGRADA-ENOQUIANA para a ${game.name}.
+    const prompt = `TAREFA: Gerar ${game.numbersCount} números com o SISTEMA QUÂNTICO-HERMÉTICO SUPREMO v8.0 para a ${game.name}.
 
-REGRAS DO JOGO ${game.name.toUpperCase()}:
+═══════════════════════════════════════════════════════════════
+🎰 REGRAS DO JOGO ${game.name.toUpperCase()}:
+═══════════════════════════════════════════════════════════════
 - Quantidade: ${game.numbersCount} números
 - Faixa: ${game.minNumber} a ${game.maxNumber}
 
-DADOS DE ENTRADA:
+═══════════════════════════════════════════════════════════════
+📊 DADOS DE ENTRADA:
+═══════════════════════════════════════════════════════════════
 - Sorteio anterior (-1): ${previousNumbers.map((n) => formatNumber(parseInt(n))).join(", ")}${extraDraws}
-- Data alvo: ${nextDrawDate}
+- Data do próximo sorteio: ${nextDrawDate}
 
-✝️📜⚛️ METODOLOGIA SAGRADA-QUÂNTICA-ENOQUIANA v6.1:
+═══════════════════════════════════════════════════════════════
+📅 ANÁLISE OBRIGATÓRIA DA DATA: ${nextDrawDate}
+═══════════════════════════════════════════════════════════════
 
-📅 **1. VIBRAÇÃO DIVINA DO DIA (CRÍTICO!)**
-   Data: ${nextDrawDate}
-   Calcule: soma de TODOS os dígitos → reduza a 1 (exceto mestres 11, 22, 33)
-   Este é o NÚMERO REGENTE DIVINO do dia!
-   
-   ⭐ REGRA DO REGENTE: Priorize números que REDUZEM ao mesmo valor!
-   Ex: Se regente = 5, priorize: 05, 14, 23, 32, 41, 50
-   Ex: Se regente = 8, priorize: 08, 17, 26, 35, 44, 53
+PASSO 1 - CALCULE O REGENTE DO DIA:
+- Separe todos os dígitos da data ${nextDrawDate}
+- Some todos os dígitos
+- Reduza até chegar a 1 dígito (exceto Mestres 11, 22, 33)
+- Este é o NÚMERO REGENTE DIVINO do dia!
 
-✝️ **2. NÚMEROS BÍBLICOS + ENOQUIANOS**
-   BÍBLICOS: 3, 5, 7, 8, 10, 12, 21, 28, 35, 40, 49
-   ENOQUIANOS: 20 (vigilantes), 49 (jubileu), 50 (libertação)
-   Múltiplos de 7: 7, 14, 21, 28, 35, 42, 49, 56
-   MESTRE 11 (PESO AUMENTADO!): **29, 38, 47, 56** ← captura fugitivos
-   EVITAR: 13 (traição)
+PASSO 2 - VERIFIQUE TESLA 3-6-9:
+- Se o regente é 3, 6 ou 9 = DIA DIVINO TESLA!
+- Priorize múltiplos de 9 (09, 18, 27, 36, 45, 54)
+- Se NÃO é 3, 6, 9 = inclua pelo menos 1 que reduza a 9
 
-📊 **3. DISTRIBUIÇÃO OBRIGATÓRIA**
-   - BAIXOS (01-20): mínimo 1 número ✓
-   - MÉDIOS (21-40): 2-3 números ✓  
-   - ALTOS (41-60): 2 números ✓
-   - FINAIS ÚNICOS: cada número deve ter final diferente!
+PASSO 3 - PLANETA REGENTE (Liber 777):
+- Regente 1 ou 6 = SOL (use quadrado 6×6: 06, 32, 34, 35, 37)
+- Regente 2 ou 9 = LUA (use quadrado 9×9: 09, 18, 27, 36, 45, 54)
+- Regente 3 = SATURNO (use quadrado 3×3: 1-9, 15, 45)
+- Regente 4 = JÚPITER (use quadrado 4×4: 16, 31, 34, 52)
+- Regente 5 = MARTE (use: 11, 24, 07, 20, 03)
+- Regente 7 = VÊNUS (use: 07, 14, 21, 28, 35, 42, 49)
+- Regente 8 = MERCÚRIO (use: 08, 17, 26, 35, 44, 53)
+- Regente 11 = MESTRE URIEL (use: 11, 22, 33, 44, 55, 47)
+- Regente 22 = MESTRE DOS CAMINHOS (use: 22, 44, 11, 33, 55)
 
-🔯 **4. ANÁLISE CABALÍSTICA**
-   - Reduza cada número do sorteio -1 a 1-9 (ou mestre)
-   - 33 = idade de Cristo = PESO MÁXIMO
-   - Números triangulares: 3, 6, 10, 15, 21, 28, 36, 45, 55
+PASSO 4 - ELEMENTO DO DIA (Golden Dawn):
+- Calcule o dia do mês da data
+- Se dia reduz a 1, 4, 7 = FOGO (use: 1, 10, 19, 28, 37, 46, 55)
+- Se dia reduz a 2, 5, 8 = ÁGUA (use: 2, 11, 20, 29, 38, 47, 56)
+- Se dia reduz a 3, 6, 9 = AR (use: 3, 12, 21, 30, 39, 48, 57)
+- Se dia reduz a 4 = TERRA (use: 4, 13, 22, 31, 40, 49, 58)
 
-⚛️ **5. ÓRBITA QUÂNTICA + SAGRADA**
-   - Base: X±1, X±2 do sorteio -1 (mínimo 4 números)
-   - PRIORIZE candidatos que REDUZEM AO REGENTE DO DIA
-   - Se candidato = 49, 50 ou reduz a 11, tem prioridade máxima!
+═══════════════════════════════════════════════════════════════
+⚛️ APLICAR SISTEMA SUPREMO v8.0:
+═══════════════════════════════════════════════════════════════
 
-☥ **6. SALTO PROFÉTICO-ENOQUIANO (1-2 números) - CRÍTICO!**
-   Inclua 1-2 números FORA da órbita
-   ORDEM DE PRIORIDADE ATUALIZADA:
-   1. Números que REDUZEM AO REGENTE do dia ← NOVO! MÁXIMO!
-   2. **47, 56** (reduzem a 11 = mestre) ← PESO AUMENTADO
-   3. **49** (Jubileu 7×7)
-   4. **50** (Libertação)
-   5. Reduzem a 8: 17, 26, 35, 44, 53
-   6. Múltiplos de 7: 07, 14, 21, 28, 35, 42
+⚡ TESLA 3-6-9: Incluir pelo menos 1 que reduza a 9
+⚛️ QUÂNTICO: Incluir 14 (orbital f) ou 18/8/32 (camadas)
+🌀 FIBONACCI: Incluir 21 e (34 ou 55)
+🔯 MESTRE: Incluir 22 (obrigatório) ou outro (11, 33, 44, 55)
+🔢 PRIMOS: Incluir 2 de (31, 37, 47, 53)
+📐 TRIANGULAR: Incluir pelo menos 1 (3, 6, 10, 15, 21, 28, 36, 45, 55)
 
-🌙 **7. VALIDAÇÃO SAGRADA v6.1**
-   - ⛔ Nenhum número exato do anterior ✓
-   - ±1/±2: mínimo 4 números ✓
-   - Distribuição: 1 baixo + 2-3 médios + 2 altos ✓
-   - Finais únicos: verificar ✓
-   - Soma: 140-180 ✓
+═══════════════════════════════════════════════════════════════
+📊 DISTRIBUIÇÃO OBRIGATÓRIA:
+═══════════════════════════════════════════════════════════════
+- BAIXOS (01-20): 1-2 números
+- MÉDIOS (21-40): 2-3 números
+- ALTOS (41-60): 2 números
+- PAR/ÍMPAR: 3+3 ou 2+4
+- FINAIS ÚNICOS: cada número com final diferente
 
-FORMATO:
+═══════════════════════════════════════════════════════════════
+🌀 ÓRBITA ±3 DO SORTEIO ANTERIOR:
+═══════════════════════════════════════════════════════════════
+- Para cada número X do sorteio anterior, considere X±1, X±2, X±3
+- ⛔ PROIBIDO usar X exato!
+- Mínimo 4 números na órbita
+
+═══════════════════════════════════════════════════════════════
+📝 FORMATO DE RESPOSTA OBRIGATÓRIO:
+═══════════════════════════════════════════════════════════════
+
 **NÚMEROS: XX, XX, XX, XX, XX, XX**
 
-✝️📜 ANÁLISE SAGRADA-ENOQUIANA v6.1:
-- Regente Divino: X (e quais números reduzem a ele)
-- Distribuição: X baixos, X médios, X altos
-- Finais: X, X, X, X, X, X (verificar unicidade)
-- Órbita ±1/±2: liste cada número
-- Salto(s) Profético(s): quais e significado
-- Soma: XXX
+═══════════════════════════════════════════════════════════════
+🌌 ANÁLISE SUPREMA v8.0 - POR QUE ESTES NÚMEROS PARA ${nextDrawDate}?
+═══════════════════════════════════════════════════════════════
 
-⚠️ Análise simbólica-profética baseada em textos bíblicos e apócrifos.`;
+📅 **DATA DO SORTEIO: ${nextDrawDate}**
+- Soma dos dígitos: [calcule]
+- Número Regente: [X]
+- Tesla 3-6-9: [é dia divino ou não?]
+- Planeta Regente: [nome do planeta]
+- Elemento do Dia: [FOGO/ÁGUA/AR/TERRA]
+
+⚡ **ANÁLISE TESLA 3-6-9:**
+- Quais números reduzem a 3: [liste]
+- Quais números reduzem a 6: [liste]
+- Quais números reduzem a 9: [liste]
+- Código Vórtice aplicado: [explique]
+
+⚛️ **ANÁLISE QUÂNTICA:**
+- Números quânticos incluídos: [liste e explique]
+- Camadas/orbitais representadas: [explique]
+
+🌀 **FIBONACCI & RAZÃO ÁUREA:**
+- Números Fibonacci incluídos: [liste]
+- Relação com φ (1.618): [explique]
+
+🪐 **CORRESPONDÊNCIAS HERMÉTICAS:**
+- Quadrado Mágico usado: [qual planeta]
+- Números do quadrado incluídos: [liste]
+
+🜂🜄🜁🜃 **ELEMENTO DOMINANTE:**
+- Elemento: [nome]
+- Números desse elemento: [liste]
+
+🔯 **NÚMEROS MESTRES:**
+- Mestres incluídos: [liste]
+- Por que foram escolhidos: [explique]
+
+🔢 **PRIMOS SAGRADOS:**
+- Primos incluídos: [liste]
+- Significado hermético: [explique]
+
+🕉️ **NÚMEROS VÉDICOS:**
+- Derivados de 108/72/49: [liste se houver]
+
+📊 **DISTRIBUIÇÃO FINAL:**
+- Baixos (01-20): [X números]
+- Médios (21-40): [X números]
+- Altos (41-60): [X números]
+- Pares: [X] | Ímpares: [X]
+- Finais: [liste cada final]
+
+🌀 **ÓRBITA ±3:**
+- Números na órbita: [liste cada um e de qual veio]
+
+➕ **SOMA TOTAL:** [XXX] → reduz a [X]
+
+✨ **CONCLUSÃO:** [Explique em 2-3 frases por que este jogo é ideal para a data ${nextDrawDate}, conectando o regente, elemento, Tesla e sistemas sagrados]
+
+⚠️ Análise baseada em física quântica, matemática Tesla, tradições herméticas e correspondências sagradas.`;
 
     try {
       const resp = await fetch(CHAT_URL, {
@@ -302,15 +368,18 @@ FORMATO:
   const generateSingleGame = async (): Promise<number[]> => {
     const extraDraws = getExtraDrawsData();
     
-    const prompt = `TAREFA: Gerar ${game.numbersCount} números para a ${game.name}.
+    const prompt = `TAREFA: Gerar ${game.numbersCount} números para a ${game.name} usando Sistema Supremo v8.0.
 
 REGRAS: ${game.numbersCount} números de ${game.minNumber} a ${game.maxNumber}
 
 DADOS:
 - Sorteio anterior: ${previousNumbers.map((n) => formatNumber(parseInt(n))).join(", ")}${extraDraws}
-- Data alvo: ${nextDrawDate}
+- Data do sorteio: ${nextDrawDate}
 
-Gere números seguindo a metodologia quântica-hermética. Retorne APENAS no formato:
+APLIQUE: Tesla 3-6-9, Física Quântica, Fibonacci, Hermetismo baseado na data ${nextDrawDate}.
+Calcule o Regente do dia e aplique as correspondências.
+
+Retorne APENAS no formato:
 **NÚMEROS: XX, XX, XX, XX, XX, XX**`;
 
     const resp = await fetch(CHAT_URL, {
@@ -422,7 +491,24 @@ Gere números seguindo a metodologia quântica-hermética. Retorne APENAS no for
         regentSum = regentSum.toString().split("").map(Number).reduce((a, b) => a + b, 0);
       }
 
-      // Score each number
+      // Score each number with Sistema Supremo v8.0
+      const fibonacciNums = [1, 2, 3, 5, 8, 13, 21, 34, 55];
+      const teslaNums = [9, 18, 27, 36, 45, 54]; // Reduce to 9
+      const quantumNums = [2, 6, 8, 10, 14, 18, 32]; // Orbitals + layers
+      const masterNums = [11, 22, 33, 44, 55];
+      const sacredPrimes = [31, 37, 41, 43, 47, 53];
+      const triangularNums = [3, 6, 10, 15, 21, 28, 36, 45, 55];
+
+      // Determine planet based on regent
+      const planetMap: Record<number, string> = {
+        1: "Sol", 2: "Lua", 3: "Saturno", 4: "Júpiter", 5: "Marte",
+        6: "Sol", 7: "Vênus", 8: "Mercúrio", 9: "Lua", 11: "Uriel", 22: "Caminhos"
+      };
+      const planet = planetMap[regentSum] || "Sol";
+
+      // Tesla day check
+      const isTeslaDay = [3, 6, 9].includes(regentSum);
+
       const scored = Object.entries(frequency).map(([numStr, freq]) => {
         const num = parseInt(numStr);
         let score = freq * 10; // Base score from frequency
@@ -432,14 +518,19 @@ Gere números seguindo a metodologia quântica-hermética. Retorne APENAS no for
         while (reduced > 9) {
           reduced = reduced.toString().split("").map(Number).reduce((a, b) => a + b, 0);
         }
-        if (reduced === regentSum) score += 5;
+        if (reduced === regentSum) score += 8;
         
-        // Sacred numbers bonus
-        if ([33, 49, 50, 55].includes(num)) score += 3;
-        if ([7, 14, 21, 28, 35, 42].includes(num)) score += 2; // Multiples of 7
-        if (reduced === 11 || reduced === 22) score += 4; // Master numbers
+        // Sistema Supremo v8.0 bonuses
+        if (teslaNums.includes(num)) score += 6; // Tesla 3-6-9
+        if (fibonacciNums.includes(num)) score += 5; // Fibonacci
+        if (quantumNums.includes(num)) score += 4; // Quantum
+        if (masterNums.includes(num)) score += 7; // Masters
+        if (sacredPrimes.includes(num)) score += 5; // Sacred primes
+        if (triangularNums.includes(num)) score += 3; // Triangular
+        if (num === 14) score += 8; // Orbital f + Pentagram
+        if ([3, 6, 9].includes(reduced)) score += 4; // Reduces to Tesla
         
-        return { num, score, freq };
+        return { num, score, freq, reduced };
       });
 
       // Sort by score and take top numbers
@@ -449,20 +540,59 @@ Gere números seguindo a metodologia quântica-hermética. Retorne APENAS no for
         .map(s => s.num)
         .sort((a, b) => a - b);
 
-      // Generate analysis
-      const analysis = `🔮 **JOGO HÍBRIDO QUÂNTICO**
+      // Categorize selected numbers
+      const selectedScored = scored.filter(s => hybridNumbers.includes(s.num));
+      const teslaIncluded = selectedScored.filter(s => teslaNums.includes(s.num) || [3, 6, 9].includes(s.reduced));
+      const fibIncluded = selectedScored.filter(s => fibonacciNums.includes(s.num));
+      const quantumIncluded = selectedScored.filter(s => quantumNums.includes(s.num));
+      const mastersIncluded = selectedScored.filter(s => masterNums.includes(s.num));
+      const primesIncluded = selectedScored.filter(s => sacredPrimes.includes(s.num));
 
-📊 **Jogos base analisados:**
+      const sum = hybridNumbers.reduce((a, b) => a + b, 0);
+      let sumReduced = sum;
+      while (sumReduced > 9) {
+        sumReduced = sumReduced.toString().split("").map(Number).reduce((a, b) => a + b, 0);
+      }
+
+      // Generate analysis with Sistema Supremo v8.0
+      const analysis = `🔮 **JOGO HÍBRIDO SUPREMO v8.0**
+
+═══════════════════════════════════════════════════════════════
+📅 **ANÁLISE DA DATA: ${nextDrawDate}**
+═══════════════════════════════════════════════════════════════
+
+🔢 **Número Regente:** ${regentSum}
+🪐 **Planeta Regente:** ${planet}
+⚡ **Dia Tesla:** ${isTeslaDay ? "SIM! Dia Divino 3-6-9" : "Não (mas Tesla aplicado)"}
+
+═══════════════════════════════════════════════════════════════
+📊 **JOGOS BASE ANALISADOS:**
+═══════════════════════════════════════════════════════════════
 ${games.map((g, i) => `• Jogo ${i + 1}: ${g.map(n => formatNumber(n)).join(", ")}`).join("\n")}
 
-📅 **Regente Divino:** ${regentSum} (soma dos dígitos de ${nextDrawDate})
+═══════════════════════════════════════════════════════════════
+🏆 **FREQUÊNCIA E PONTUAÇÃO SUPREMA:**
+═══════════════════════════════════════════════════════════════
+${scored.slice(0, 10).map(s => `• ${formatNumber(s.num)}: ${s.freq}/3 jogos | Score: ${s.score} | Reduz a ${s.reduced}`).join("\n")}
 
-🏆 **Frequência das âncoras:**
-${scored.slice(0, 8).map(s => `• ${formatNumber(s.num)}: ${s.freq}/3 jogos (score: ${s.score})`).join("\n")}
+═══════════════════════════════════════════════════════════════
+🌌 **ANÁLISE SISTEMA SUPREMO v8.0:**
+═══════════════════════════════════════════════════════════════
 
-✨ **Números selecionados:** ${hybridNumbers.map(n => formatNumber(n)).join(", ")}
+⚡ **Tesla 3-6-9:** ${teslaIncluded.length > 0 ? teslaIncluded.map(s => formatNumber(s.num)).join(", ") : "Nenhum direto, mas código vórtice aplicado"}
+⚛️ **Quânticos:** ${quantumIncluded.length > 0 ? quantumIncluded.map(s => formatNumber(s.num)).join(", ") : "Orbitais indiretamente presentes"}
+🌀 **Fibonacci:** ${fibIncluded.length > 0 ? fibIncluded.map(s => formatNumber(s.num)).join(", ") : "Razão áurea aplicada indiretamente"}
+🔯 **Mestres:** ${mastersIncluded.length > 0 ? mastersIncluded.map(s => formatNumber(s.num)).join(", ") : "Energia mestre via redução"}
+🔢 **Primos Sagrados:** ${primesIncluded.length > 0 ? primesIncluded.map(s => formatNumber(s.num)).join(", ") : "Primalidade distribuída"}
 
-⚛️ Este jogo combina as âncoras mais consistentes das 3 gerações quânticas, priorizando números que reduzem ao Regente ${regentSum} e símbolos sagrados.`;
+═══════════════════════════════════════════════════════════════
+✨ **NÚMEROS SELECIONADOS:** ${hybridNumbers.map(n => formatNumber(n)).join(", ")}
+═══════════════════════════════════════════════════════════════
+
+➕ **Soma:** ${sum} → reduz a ${sumReduced}
+
+📝 **Por que estes números para ${nextDrawDate}?**
+Este jogo combina as âncoras mais consistentes das 3 gerações quânticas. O Regente ${regentSum} (${planet}) harmoniza com os números que reduzem a ele. ${isTeslaDay ? "Por ser dia Tesla (3-6-9), priorizamos múltiplos de 9." : "O código Tesla 3-6-9 foi aplicado para equilibrar as energias."} Os sistemas Quântico, Fibonacci e Hermético convergem para esta combinação ideal.`;
 
       setResult({
         numbers: hybridNumbers,
