@@ -79,46 +79,48 @@ serve(async (req) => {
     let systemPrompt = SYSTEM_PROMPT;
     
     if (type === 'generate') {
-      systemPrompt += `\n\n⚠️ MODO GERAÇÃO - PROTOCOLO v4.0 QUÂNTICO-CABALÍSTICO:
+      systemPrompt += `\n\n⚠️ MODO GERAÇÃO - PROTOCOLO v5.0 SAGRADO-QUÂNTICO:
 
-📅 PASSO 1 - VIBRAÇÃO DO DIA:
-- Extraia a DATA ALVO da mensagem (formato: AAAA-MM-DD ou DD/MM/AAAA)
-- Calcule: soma de todos os dígitos → reduza a 1 dígito (exceto 11, 22, 33)
-- Este é o NÚMERO REGENTE DO DIA
+🚫 REGRA ABSOLUTA: NUNCA repita números exatos do sorteio anterior! Use APENAS adjacentes (±1, ±2).
 
-🔯 PASSO 2 - ANÁLISE CABALÍSTICA DO SORTEIO ANTERIOR:
-- Para cada número do sorteio -1, calcule sua redução cabalística
-- Identifique números mestres (11, 22, 33) - estes têm PESO DOBRADO
-- Números triangulares (3, 6, 10, 15, 21, 28, 36, 45, 55) são SAGRADOS
+📅 PASSO 1 - VIBRAÇÃO DIVINA DO DIA:
+- Extraia a DATA ALVO e calcule: soma de todos os dígitos → reduza a 1 (exceto 11, 22, 33)
+- Este é o NÚMERO REGENTE DIVINO
 
-⚛️ PASSO 3 - ÓRBITA QUÂNTICA COM AJUSTE MÍSTICO:
-- Base: X±1, X±2 (prioridade máxima)
-- AJUSTE: se o número regente do dia for N, priorize números que reduzem a N
-- Exemplo: dia regente 5, priorize 05, 14, 23, 32, 41, 50 (todos reduzem a 5)
+✝️ PASSO 2 - NÚMEROS BÍBLICOS:
+- SAGRADOS: 3, 5, 7, 8, 10, 12, 21, 28, 35, 40, 49
+- Múltiplos de 7 têm poder especial: 7, 14, 21, 28, 35, 42, 49, 56
+- 33 = idade de Cristo (peso máximo se estiver no anterior)
+- EVITAR: 13 (traição)
 
-☥ PASSO 4 - PADRÕES SAGRADOS:
-- Busque pelo menos 1 número triangular (21, 28, 36, 45, 55)
-- Inclua números que ressoam com 7 (perfeição) ou 9 (completude)
-- Se houver mestre 33 no anterior, números próximos têm força extra
+⚛️ PASSO 3 - ÓRBITA SAGRADA:
+- Para CADA número X do sorteio -1, use APENAS: X-1, X+1, X-2, X+2
+- ⛔ PROIBIDO usar o número X exato!
+- Mínimo 4 números em ±1/±2
+- Priorize candidatos que são múltiplos de 7 ou reduzem ao regente
 
-🌙 PASSO 5 - VALIDAÇÃO FINAL:
-- ±1/±2: mínimo 4 números
-- Soma ideal: 140-180
-- Verifique ressonância com número regente do dia
-- 3P/3I, finais únicos
+✨ PASSO 4 - SALTO PROFÉTICO (1 número):
+- Inclua 1 número FORA da órbita direta
+- Escolha: múltiplo de 7 (como 47, 49) ou número que reduz a 8 (ressurreição: 17, 26, 35, 44, 53)
+- O salto profético captura os números que "fogem" da órbita normal
+
+🌙 PASSO 5 - VALIDAÇÃO SAGRADA:
+- ⛔ Nenhum número exato do sorteio -1 ✓
+- ±1/±2: mínimo 4 números ✓
+- Pelo menos 1 bíblico (7, 21, 28, 35, etc) ✓
+- Soma: 140-180 ✓
 
 FORMATO:
 **NÚMEROS: XX, XX, XX, XX, XX, XX**
 
-🔮 ANÁLISE MÍSTICA:
-- Número Regente do Dia: X (significado)
-- Órbita ±1: X números
-- Órbita ±2: X números
-- Ressonância Cabalística: X/6
-- Números Sagrados: liste
-- Soma: XXX → reduz a Y
+✝️🔮 ANÁLISE:
+- Regente Divino: X
+- Órbita ±1/±2: X números
+- Salto Profético: qual número e significado
+- Bíblicos presentes: liste
+- Soma: XXX
 
-Gere 1 jogo com máxima ressonância.`;
+Gere 1 jogo.`;
     } else if (type === 'analyze') {
       systemPrompt += `\n\nO usuário quer análise profunda. Combine estatística com leitura simbólica.`;
     }
