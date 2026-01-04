@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 interface NumberOrbProps {
   number: number;
   delay?: number;
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg" | "responsive";
   active?: boolean;
 }
 
@@ -12,6 +12,7 @@ export const NumberOrb = ({ number, delay = 0, size = "lg", active = true }: Num
     sm: "w-10 h-10 text-lg",
     md: "w-14 h-14 text-xl",
     lg: "w-20 h-20 text-3xl",
+    responsive: "w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 text-xl sm:text-2xl lg:text-3xl",
   };
 
   return (

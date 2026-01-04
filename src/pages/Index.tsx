@@ -37,44 +37,44 @@ const numerologyData = [
 
 const Index = () => {
   return (
-    <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen py-6 px-3 sm:py-12 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         {/* Top Bar with User Menu */}
-        <div className="flex justify-end mb-8 opacity-0 animate-fade-in" style={{ animationFillMode: "forwards" }}>
+        <div className="flex justify-end mb-4 sm:mb-8 opacity-0 animate-fade-in" style={{ animationFillMode: "forwards" }}>
           <UserMenu />
         </div>
 
         {/* Header */}
-        <header className="text-center mb-16 opacity-0 animate-fade-in" style={{ animationDelay: "100ms", animationFillMode: "forwards" }}>
-          <p className="text-gold/80 font-mono text-sm tracking-widest uppercase mb-3">
+        <header className="text-center mb-8 sm:mb-16 opacity-0 animate-fade-in" style={{ animationDelay: "100ms", animationFillMode: "forwards" }}>
+          <p className="text-gold/80 font-mono text-xs sm:text-sm tracking-widest uppercase mb-2 sm:mb-3">
             Oráculo Quântico de Loterias
           </p>
-          <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-foreground mb-4">
+          <h1 className="font-display text-3xl sm:text-5xl lg:text-7xl font-bold text-foreground mb-2 sm:mb-4">
             Inteligência <span className="text-gold">Quântica</span>
           </h1>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Análise estatística, numerologia cabalística e mapa astral — todos os jogos em um só lugar
+          <p className="text-muted-foreground text-sm sm:text-lg max-w-2xl mx-auto px-2">
+            Análise estatística, numerologia cabalística e mapa astral
           </p>
         </header>
 
         {/* Drawn Numbers Display */}
-        <section className="mb-16">
-          <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
+        <section className="mb-8 sm:mb-16">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-4 lg:gap-6">
             {drawnNumbers.map((num, idx) => (
-              <NumberOrb key={num} number={num} delay={idx * 150} />
+              <NumberOrb key={num} number={num} delay={idx * 150} size="responsive" />
             ))}
           </div>
         </section>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-8 sm:mb-12">
           {/* Statistical Analysis */}
           <AnalysisCard
             title="Análise Estatística"
-            icon={<BarChart3 className="w-5 h-5" />}
+            icon={<BarChart3 className="w-4 h-4 sm:w-5 sm:h-5" />}
             delay={100}
           >
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               <StatRow label="Soma Total" value={sum} highlight icon="Σ" />
               <StatRow label="Média" value={(sum / 6).toFixed(1)} icon="μ" />
               <StatRow label="Ímpares" value={`${oddNumbers.length} (${oddNumbers.join(", ")})`} icon="⊙" />
@@ -86,23 +86,23 @@ const Index = () => {
           {/* Pattern Analysis */}
           <AnalysisCard
             title="Padrões Identificados"
-            icon={<Target className="w-5 h-5" />}
+            icon={<Target className="w-4 h-4 sm:w-5 sm:h-5" />}
             delay={200}
           >
-            <div className="space-y-4">
-              <div className="p-3 rounded-lg bg-muted/30 border border-border/30">
-                <p className="text-sm text-muted-foreground mb-1">Finais Únicos</p>
-                <p className="font-mono text-foreground">
+            <div className="space-y-3 sm:space-y-4">
+              <div className="p-2 sm:p-3 rounded-lg bg-muted/30 border border-border/30">
+                <p className="text-xs sm:text-sm text-muted-foreground mb-1">Finais Únicos</p>
+                <p className="font-mono text-sm sm:text-base text-foreground">
                   Todos finais diferentes: <span className="text-gold">5, 4, 2, 1, 7, 3</span>
                 </p>
               </div>
-              <div className="p-3 rounded-lg bg-muted/30 border border-border/30">
-                <p className="text-sm text-muted-foreground mb-1">Distribuição</p>
-                <p className="text-foreground">3 ímpares / 3 pares — padrão equilibrado 3×3</p>
+              <div className="p-2 sm:p-3 rounded-lg bg-muted/30 border border-border/30">
+                <p className="text-xs sm:text-sm text-muted-foreground mb-1">Distribuição</p>
+                <p className="text-sm sm:text-base text-foreground">3 ímpares / 3 pares — padrão equilibrado 3×3</p>
               </div>
-              <div className="p-3 rounded-lg bg-gold/10 border border-gold/30">
-                <p className="text-sm text-gold/80 mb-1">Diagnóstico</p>
-                <p className="text-foreground">Jogo bem distribuído, espalhado por todas as faixas — anti-padrão popular</p>
+              <div className="p-2 sm:p-3 rounded-lg bg-gold/10 border border-gold/30">
+                <p className="text-xs sm:text-sm text-gold/80 mb-1">Diagnóstico</p>
+                <p className="text-sm sm:text-base text-foreground">Jogo bem distribuído, anti-padrão popular</p>
               </div>
             </div>
           </AnalysisCard>
@@ -111,21 +111,21 @@ const Index = () => {
         {/* Distribution */}
         <AnalysisCard
           title="Distribuição por Faixa"
-          icon={<TrendingUp className="w-5 h-5" />}
+          icon={<TrendingUp className="w-4 h-4 sm:w-5 sm:h-5" />}
           delay={300}
-          className="mb-12"
+          className="mb-8 sm:mb-12"
         >
           <DistributionBar ranges={ranges} />
         </AnalysisCard>
 
         {/* Numerology Section */}
-        <section className="mb-12">
-          <div className="flex items-center gap-3 mb-6 opacity-0 animate-fade-in" style={{ animationDelay: "400ms", animationFillMode: "forwards" }}>
-            <Sparkles className="w-6 h-6 text-cosmic-purple" />
-            <h2 className="font-display text-3xl font-semibold text-foreground">Leitura Cabalística</h2>
+        <section className="mb-8 sm:mb-12">
+          <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6 opacity-0 animate-fade-in" style={{ animationDelay: "400ms", animationFillMode: "forwards" }}>
+            <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-cosmic-purple" />
+            <h2 className="font-display text-xl sm:text-3xl font-semibold text-foreground">Leitura Cabalística</h2>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
             {numerologyData.map((item, idx) => (
               <div
                 key={item.number}
@@ -146,31 +146,31 @@ const Index = () => {
         {/* Sum Reduction */}
         <AnalysisCard
           title="Redução Numerológica"
-          icon={<Hash className="w-5 h-5" />}
+          icon={<Hash className="w-4 h-4 sm:w-5 sm:h-5" />}
           variant="mystic"
           delay={1000}
-          className="mb-12"
+          className="mb-8 sm:mb-12"
         >
-          <div className="flex flex-wrap items-center justify-center gap-4 py-4">
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 py-2 sm:py-4">
             <div className="text-center">
-              <p className="text-4xl font-display font-bold text-foreground">{sum}</p>
+              <p className="text-2xl sm:text-4xl font-display font-bold text-foreground">{sum}</p>
               <p className="text-xs text-muted-foreground mt-1">Soma</p>
             </div>
-            <span className="text-2xl text-muted-foreground">→</span>
+            <span className="text-xl sm:text-2xl text-muted-foreground">→</span>
             <div className="text-center">
-              <p className="text-4xl font-display font-bold text-foreground">{reducedSum}</p>
+              <p className="text-2xl sm:text-4xl font-display font-bold text-foreground">{reducedSum}</p>
               <p className="text-xs text-muted-foreground mt-1">1ª Redução</p>
             </div>
-            <span className="text-2xl text-muted-foreground">→</span>
+            <span className="text-xl sm:text-2xl text-muted-foreground">→</span>
             <div className="text-center">
-              <p className="text-5xl font-display font-bold text-cosmic-purple">{finalReduction}</p>
+              <p className="text-3xl sm:text-5xl font-display font-bold text-cosmic-purple">{finalReduction}</p>
               <p className="text-xs text-muted-foreground mt-1">Número Final</p>
             </div>
           </div>
-          <div className="mt-4 p-4 rounded-lg bg-cosmic-purple/10 border border-cosmic-purple/30 text-center">
-            <p className="text-cosmic-purple font-semibold">Número {finalReduction} = {finalReduction === 1 ? "Novo Início, Liderança" : finalReduction === 4 ? "Estrutura, Fundação, Trabalho" : finalReduction === 1 + 7 ? "Espiritualidade" : "Transformação"}</p>
-            <p className="text-sm text-muted-foreground mt-1">
-              Soma 172 → vibração 1: energia de novos começos e liderança individual.
+          <div className="mt-3 sm:mt-4 p-3 sm:p-4 rounded-lg bg-cosmic-purple/10 border border-cosmic-purple/30 text-center">
+            <p className="text-sm sm:text-base text-cosmic-purple font-semibold">Número {finalReduction} = {finalReduction === 1 ? "Novo Início, Liderança" : finalReduction === 4 ? "Estrutura, Fundação, Trabalho" : finalReduction === 1 + 7 ? "Espiritualidade" : "Transformação"}</p>
+            <p className="text-xs sm:text-sm text-muted-foreground mt-1">
+              Soma 172 → vibração 1: energia de novos começos.
             </p>
           </div>
         </AnalysisCard>
@@ -178,36 +178,36 @@ const Index = () => {
         {/* Conclusion */}
         <AnalysisCard
           title="Conclusão"
-          icon={<Zap className="w-5 h-5" />}
+          icon={<Zap className="w-4 h-4 sm:w-5 sm:h-5" />}
           variant="highlight"
           delay={1100}
         >
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
-            <div className="p-4">
-              <p className="text-3xl font-display font-bold text-gold mb-2">Equilibrado</p>
-              <p className="text-sm text-muted-foreground">3 pares / 3 ímpares</p>
+          <div className="grid grid-cols-3 gap-2 sm:gap-4 text-center">
+            <div className="p-2 sm:p-4">
+              <p className="text-lg sm:text-3xl font-display font-bold text-gold mb-1 sm:mb-2">Equilibrado</p>
+              <p className="text-xs sm:text-sm text-muted-foreground">3 pares / 3 ímpares</p>
             </div>
-            <div className="p-4">
-              <p className="text-3xl font-display font-bold text-gold mb-2">Espalhado</p>
-              <p className="text-sm text-muted-foreground">Todas faixas cobertas</p>
+            <div className="p-2 sm:p-4">
+              <p className="text-lg sm:text-3xl font-display font-bold text-gold mb-1 sm:mb-2">Espalhado</p>
+              <p className="text-xs sm:text-sm text-muted-foreground">Todas faixas</p>
             </div>
-            <div className="p-4">
-              <p className="text-3xl font-display font-bold text-gold mb-2">Anti-Padrão</p>
-              <p className="text-sm text-muted-foreground">Sem sequências ou finais repetidos</p>
+            <div className="p-2 sm:p-4">
+              <p className="text-lg sm:text-3xl font-display font-bold text-gold mb-1 sm:mb-2">Anti-Padrão</p>
+              <p className="text-xs sm:text-sm text-muted-foreground">Sem sequências</p>
             </div>
           </div>
-          <div className="mt-6 p-4 rounded-lg bg-muted/30 border border-border/30 text-center">
-            <p className="text-foreground font-mono text-sm">
-              "Distribuição ideal para menos divisão de prêmio — jogo de jogador experiente."
+          <div className="mt-4 sm:mt-6 p-3 sm:p-4 rounded-lg bg-muted/30 border border-border/30 text-center">
+            <p className="text-foreground font-mono text-xs sm:text-sm">
+              "Distribuição ideal para menos divisão de prêmio."
             </p>
           </div>
         </AnalysisCard>
 
         {/* Lottery Games Generator */}
-        <section className="mb-12">
-          <div className="flex items-center gap-3 mb-6 opacity-0 animate-fade-in" style={{ animationDelay: "1100ms", animationFillMode: "forwards" }}>
-            <Dices className="w-6 h-6 text-gold" />
-            <h2 className="font-display text-3xl font-semibold text-foreground">Gerador Quântico</h2>
+        <section className="mb-8 sm:mb-12">
+          <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6 opacity-0 animate-fade-in" style={{ animationDelay: "1100ms", animationFillMode: "forwards" }}>
+            <Dices className="w-5 h-5 sm:w-6 sm:h-6 text-gold" />
+            <h2 className="font-display text-xl sm:text-3xl font-semibold text-foreground">Gerador Quântico</h2>
           </div>
           <div className="opacity-0 animate-fade-in" style={{ animationDelay: "1200ms", animationFillMode: "forwards" }}>
             <LotteryTabs />
@@ -215,10 +215,10 @@ const Index = () => {
         </section>
 
         {/* Quantum Oracle */}
-        <section className="mb-12">
-          <div className="flex items-center gap-3 mb-6 opacity-0 animate-fade-in" style={{ animationDelay: "1300ms", animationFillMode: "forwards" }}>
-            <Atom className="w-6 h-6 text-cosmic-purple" />
-            <h2 className="font-display text-3xl font-semibold text-foreground">Oráculo Quântico</h2>
+        <section className="mb-8 sm:mb-12">
+          <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6 opacity-0 animate-fade-in" style={{ animationDelay: "1300ms", animationFillMode: "forwards" }}>
+            <Atom className="w-5 h-5 sm:w-6 sm:h-6 text-cosmic-purple" />
+            <h2 className="font-display text-xl sm:text-3xl font-semibold text-foreground">Oráculo Quântico</h2>
           </div>
           <div className="opacity-0 animate-fade-in" style={{ animationDelay: "1400ms", animationFillMode: "forwards" }}>
             <QuantumOracle />
@@ -226,11 +226,11 @@ const Index = () => {
         </section>
 
         {/* Footer */}
-        <footer className="mt-16 text-center opacity-0 animate-fade-in space-y-3" style={{ animationDelay: "1500ms", animationFillMode: "forwards" }}>
-          <p className="text-muted-foreground text-sm">
+        <footer className="mt-10 sm:mt-16 text-center opacity-0 animate-fade-in space-y-2 sm:space-y-3 pb-6" style={{ animationDelay: "1500ms", animationFillMode: "forwards" }}>
+          <p className="text-muted-foreground text-xs sm:text-sm px-2">
             Análise simbólica não constitui previsão. Números sorteados em {drawDate}.
           </p>
-          <p className="text-gold/80 text-sm font-medium">
+          <p className="text-gold/80 text-xs sm:text-sm font-medium">
             Desenvolvido por <span className="text-gold">Uriel da Fonseca Fortunato</span>
           </p>
         </footer>
