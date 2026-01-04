@@ -99,15 +99,18 @@ serve(async (req) => {
 - Mínimo 4 números em ±1/±2
 - Priorize candidatos que são múltiplos de 7 ou reduzem ao regente
 
-✨ PASSO 4 - SALTO PROFÉTICO (1 número):
-- Inclua 1 número FORA da órbita direta
-- Escolha: múltiplo de 7 (como 47, 49) ou número que reduz a 8 (ressurreição: 17, 26, 35, 44, 53)
-- O salto profético captura os números que "fogem" da órbita normal
+✨ PASSO 4 - SALTO PROFÉTICO (1-2 números):
+- Inclua 1-2 números FORA da órbita direta para capturar "fugitivos"
+- PRIORIDADE MÁXIMA para saltos:
+  * Números que reduzem a 8 (ressurreição): 17, 26, 35, 44, 53 ← MUITO FORTE
+  * Múltiplos de 7 (perfeição): 07, 14, 21, 28, 35, 42, 49, 56 
+  * Números que reduzem a 11 (mestre): 29, 38, 47, 56
+- REGRA: se o resultado anterior tem números altos (50+), inclua salto na faixa 45-55
 
 🌙 PASSO 5 - VALIDAÇÃO SAGRADA:
 - ⛔ Nenhum número exato do sorteio -1 ✓
 - ±1/±2: mínimo 4 números ✓
-- Pelo menos 1 bíblico (7, 21, 28, 35, etc) ✓
+- Salto profético: 1-2 números (reduz a 8 ou múltiplo de 7) ✓
 - Soma: 140-180 ✓
 
 FORMATO:
@@ -115,9 +118,8 @@ FORMATO:
 
 ✝️🔮 ANÁLISE:
 - Regente Divino: X
-- Órbita ±1/±2: X números
-- Salto Profético: qual número e significado
-- Bíblicos presentes: liste
+- Órbita ±1/±2: X números (liste cada um)
+- Salto(s) Profético(s): quais e significado bíblico
 - Soma: XXX
 
 Gere 1 jogo.`;
