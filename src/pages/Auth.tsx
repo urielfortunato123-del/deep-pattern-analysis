@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { Loader2, Mail, Lock, User, ArrowLeft, Sparkles } from "lucide-react";
+import { Loader2, Mail, Lock, User, Sparkles } from "lucide-react";
 import { z } from "zod";
 
 const authSchema = z.object({
@@ -52,7 +52,7 @@ const Auth = () => {
           });
         } else {
           toast({ title: "Bem-vindo de volta! 🎯" });
-          navigate("/");
+          navigate("/app");
         }
       } else {
         const { error } = await signUp(email, password, fullName);
@@ -66,7 +66,7 @@ const Auth = () => {
           });
         } else {
           toast({ title: "Conta criada com sucesso! 🎉" });
-          navigate("/");
+          navigate("/app");
         }
       }
     } catch (err) {
@@ -83,15 +83,6 @@ const Auth = () => {
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
       <div className="w-full max-w-md">
-        <Button
-          variant="ghost"
-          onClick={() => navigate("/")}
-          className="mb-6 text-muted-foreground hover:text-foreground"
-        >
-          <ArrowLeft className="w-4 h-4 mr-2" />
-          Voltar
-        </Button>
-
         <div className="glass-card rounded-xl p-8">
           <div className="text-center mb-8">
             <div className="w-16 h-16 mx-auto mb-4 rounded-full gradient-gold flex items-center justify-center">
