@@ -165,26 +165,28 @@ DADOS DE ENTRADA:
    - PRIORIZE candidatos que são bíblicos OU reduzem ao regente
    - Se candidato = múltiplo de 7, tem prioridade máxima!
 
-☥ **5. SALTO PROFÉTICO (1 número)**
-   - Inclua 1 número FORA da órbita direta
-   - Escolha baseado em: múltiplo de 7, triangular, ou forte ressonância bíblica
-   - Ex: 47 (4+7=11 mestre), 53 (5+3=8 ressurreição)
+☥ **5. SALTO PROFÉTICO (1-2 números) - CRÍTICO!**
+   - Inclua 1-2 números FORA da órbita direta
+   - PRIORIDADE para capturar "fugitivos":
+     * Reduzem a 8 (ressurreição): **17, 26, 35, 44, 53** ← muito forte!
+     * Múltiplos de 7: **07, 14, 21, 28, 35, 42, 49, 56**
+     * Reduzem a 11 (mestre): **29, 38, 47, 56**
+   - Se sorteio anterior tem números 50+, inclua salto na faixa 45-55
 
 🌙 **6. VALIDAÇÃO SAGRADA**
+   - ⛔ Nenhum número exato do anterior ✓
    - ±1/±2: mínimo 4 números ✓
-   - Pelo menos 1 número bíblico poderoso ✓
+   - Salto(s) profético(s): 1-2 números ✓
    - Soma: 140-180 ✓
-   - 3P/3I, finais únicos ✓
 
 FORMATO:
 **NÚMEROS: XX, XX, XX, XX, XX, XX**
 
 ✝️🔮 ANÁLISE SAGRADA:
-- Número Regente Divino: X (significado)
-- Números Bíblicos: liste quais
-- Órbita ±1/±2: X números
-- Salto Profético: qual e porquê
-- Soma: XXX → reduz a Y (significado bíblico)
+- Regente Divino: X
+- Órbita ±1/±2: liste cada número
+- Salto(s) Profético(s): quais e significado (reduz a 8? múltiplo de 7?)
+- Soma: XXX
 
 ⚠️ Análise simbólica-profética.`;
 
