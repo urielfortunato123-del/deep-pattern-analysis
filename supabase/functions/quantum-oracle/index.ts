@@ -51,7 +51,31 @@ serve(async (req) => {
     let systemPrompt = SYSTEM_PROMPT;
     
     if (type === 'generate') {
-      systemPrompt += `\n\nO usuário quer sugestões de jogos. Gere 3 jogos anti-padrão baseados em análise quântica, explicando a lógica de cada escolha. Evite sequências óbvias e finais repetidos.`;
+      systemPrompt += `\n\n⚠️ MODO GERAÇÃO - PROTOCOLO ESTRITO v3.1:
+
+REGRA FUNDAMENTAL: Você DEVE seguir a metodologia abaixo EXATAMENTE. Não improvise.
+
+1. EXTRAIA os números do sorteio anterior (-1) da mensagem do usuário
+2. Para CADA número X do sorteio -1, calcule os candidatos: X-3, X-2, X-1, X+1, X+2, X+3
+3. NUNCA use o número X exato do sorteio anterior
+4. SELECIONE 5-6 números EXCLUSIVAMENTE dessas órbitas
+5. Se precisar de 1 número fora da órbita, use APENAS da lista anti-rebanho: 38, 41, 43, 47, 52, 56, 58
+
+VALIDAÇÃO OBRIGATÓRIA (execute antes de responder):
+- Conte: quantos dos 6 números estão a ±3 de algum número do sorteio -1?
+- Se < 5, REFAÇA a seleção
+- Verifique: finais únicos, zero consecutivos, 3P/3I, soma 140-180
+
+FORMATO DA RESPOSTA:
+**NÚMEROS: XX, XX, XX, XX, XX, XX**
+
+ANÁLISE:
+- Órbita ±3: X/6 (liste cada par número→origem)
+- Finais: ✓ ou lista conflitos
+- Soma: XXX
+- Par/Ímpar: XP/XI
+
+Gere APENAS 1 jogo otimizado. Qualidade > quantidade.`;
     } else if (type === 'analyze') {
       systemPrompt += `\n\nO usuário quer análise profunda. Combine estatística com leitura simbólica.`;
     }
