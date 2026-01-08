@@ -177,7 +177,7 @@ export const GameGenerator = ({ game }: GameGeneratorProps) => {
 
     const extraDraws = getExtraDrawsData();
     
-    const prompt = `TAREFA: Gerar ${game.numbersCount} números com o SISTEMA QUÂNTICO-HERMÉTICO SUPREMO v8.0 para a ${game.name}.
+    const prompt = `TAREFA: Gerar ${game.numbersCount} números com o SISTEMA QUÂNTICO-HERMÉTICO SUPREMO v9.0 para a ${game.name}.
 
 ═══════════════════════════════════════════════════════════════
 🎰 REGRAS DO JOGO ${game.name.toUpperCase()}:
@@ -192,48 +192,66 @@ export const GameGenerator = ({ game }: GameGeneratorProps) => {
 - Data do próximo sorteio: ${nextDrawDate}
 
 ═══════════════════════════════════════════════════════════════
-📅 ANÁLISE OBRIGATÓRIA DA DATA: ${nextDrawDate}
+✨ LEI DA ATRAÇÃO 369 + LEI DA SUPOSIÇÃO (Neville Goddard)
 ═══════════════════════════════════════════════════════════════
 
-PASSO 1 - CALCULE O REGENTE DO DIA:
-- Separe todos os dígitos da data ${nextDrawDate}
-- Some todos os dígitos
-- Reduza até chegar a 1 dígito (exceto Mestres 11, 22, 33)
-- Este é o NÚMERO REGENTE DIVINO do dia!
+PASSO 1 - ANÁLISE 369:
+- Calcule a soma dos dígitos da data ${nextDrawDate}
+- Se reduz a 3, 6 ou 9: DIA DE MANIFESTAÇÃO PODEROSA!
+- Aplique o ciclo: 3 (início), 6 (processo), 9 (resultado)
+- Priorize múltiplos de 9: 09, 18, 27, 36, 45, 54
 
-PASSO 2 - VERIFIQUE TESLA 3-6-9:
-- Se o regente é 3, 6 ou 9 = DIA DIVINO TESLA!
-- Priorize múltiplos de 9 (09, 18, 27, 36, 45, 54)
-- Se NÃO é 3, 6, 9 = inclua pelo menos 1 que reduza a 9
-
-PASSO 3 - PLANETA REGENTE (Liber 777):
-- Regente 1 ou 6 = SOL (use quadrado 6×6: 06, 32, 34, 35, 37)
-- Regente 2 ou 9 = LUA (use quadrado 9×9: 09, 18, 27, 36, 45, 54)
-- Regente 3 = SATURNO (use quadrado 3×3: 1-9, 15, 45)
-- Regente 4 = JÚPITER (use quadrado 4×4: 16, 31, 34, 52)
-- Regente 5 = MARTE (use: 11, 24, 07, 20, 03)
-- Regente 7 = VÊNUS (use: 07, 14, 21, 28, 35, 42, 49)
-- Regente 8 = MERCÚRIO (use: 08, 17, 26, 35, 44, 53)
-- Regente 11 = MESTRE URIEL (use: 11, 22, 33, 44, 55, 47)
-- Regente 22 = MESTRE DOS CAMINHOS (use: 22, 44, 11, 33, 55)
-
-PASSO 4 - ELEMENTO DO DIA (Golden Dawn):
-- Calcule o dia do mês da data
-- Se dia reduz a 1, 4, 7 = FOGO (use: 1, 10, 19, 28, 37, 46, 55)
-- Se dia reduz a 2, 5, 8 = ÁGUA (use: 2, 11, 20, 29, 38, 47, 56)
-- Se dia reduz a 3, 6, 9 = AR (use: 3, 12, 21, 30, 39, 48, 57)
-- Se dia reduz a 4 = TERRA (use: 4, 13, 22, 31, 40, 49, 58)
+PASSO 2 - LEI DA SUPOSIÇÃO:
+- Números do "Eu Sou" (poder criador): 1, 5, 6, 15
+- Técnica SATS: 4, 7, 8, 19
+- Visualize a vitória como já realizada!
 
 ═══════════════════════════════════════════════════════════════
-⚛️ APLICAR SISTEMA SUPREMO v8.0:
+👼 NÚMEROS ANGELICAIS (777, 888, 999)
 ═══════════════════════════════════════════════════════════════
 
-⚡ TESLA 3-6-9: Incluir pelo menos 1 que reduza a 9
+PASSO 3 - CÓDIGOS ANGELICAIS:
+- 777 (Sorte Suprema): use múltiplos de 7 → 07, 14, 21, 28, 35, 42, 49, 56
+- 888 (Abundância Infinita): use múltiplos de 8 → 08, 16, 24, 32, 40, 48, 56
+- 999 (Completude): use múltiplos de 9 → 09, 18, 27, 36, 45, 54
+- OBRIGATÓRIO: pelo menos 1 Mestre (11, 22, 33, 44, 55)
+
+═══════════════════════════════════════════════════════════════
+📅 ANÁLISE DA DATA: ${nextDrawDate}
+═══════════════════════════════════════════════════════════════
+
+PASSO 4 - REGENTE DO DIA:
+- Some todos os dígitos da data
+- Reduza até 1 dígito (exceto Mestres 11, 22, 33)
+- Este é o NÚMERO REGENTE DIVINO!
+
+PASSO 5 - PLANETA REGENTE (Liber 777):
+- 1 ou 6 = SOL (quadrado 6×6: 06, 32, 34, 35, 37)
+- 2 ou 9 = LUA (quadrado 9×9: 09, 18, 27, 36, 45, 54) ← LUA = 369 = TESLA!
+- 3 = SATURNO (quadrado 3×3: 1-9, 15, 45)
+- 4 = JÚPITER (quadrado 4×4: 16, 31, 34, 52)
+- 5 = MARTE (11, 24, 07, 20, 03)
+- 7 = VÊNUS (07, 14, 21, 28, 35, 42, 49) ← 777!
+- 8 = MERCÚRIO (08, 17, 26, 35, 44, 53) ← 888!
+- 11 = MESTRE URIEL (11, 22, 33, 44, 55, 47)
+- 22 = MESTRE DOS CAMINHOS (22, 44, 11, 33, 55)
+
+PASSO 6 - ELEMENTO (Golden Dawn):
+- Dia reduz a 1, 4, 7 = FOGO (1, 10, 19, 28, 37, 46, 55)
+- Dia reduz a 2, 5, 8 = ÁGUA (2, 11, 20, 29, 38, 47, 56)
+- Dia reduz a 3, 6, 9 = AR (3, 12, 21, 30, 39, 48, 57)
+- Dia reduz a 4 = TERRA (4, 13, 22, 31, 40, 49, 58)
+
+═══════════════════════════════════════════════════════════════
+⚛️ SISTEMA QUÂNTICO-ESOTÉRICO v9.0:
+═══════════════════════════════════════════════════════════════
+
+⚡ TESLA 3-6-9: Pelo menos 1 que reduza a 9 (27 é prioridade!)
+👼 ANGELICAL: 1 múltiplo de 7 (de 777) + 1 Mestre (11, 22, 33, 44, 55)
 ⚛️ QUÂNTICO: Incluir 14 (orbital f) ou 18/8/32 (camadas)
 🌀 FIBONACCI: Incluir 21 e (34 ou 55)
-🔯 MESTRE: Incluir 22 (obrigatório) ou outro (11, 33, 44, 55)
 🔢 PRIMOS: Incluir 2 de (31, 37, 47, 53)
-📐 TRIANGULAR: Incluir pelo menos 1 (3, 6, 10, 15, 21, 28, 36, 45, 55)
+📐 TRIANGULAR: Pelo menos 1 (3, 6, 10, 15, 21, 28, 36, 45, 55)
 
 ═══════════════════════════════════════════════════════════════
 📊 DISTRIBUIÇÃO OBRIGATÓRIA:
@@ -247,7 +265,7 @@ PASSO 4 - ELEMENTO DO DIA (Golden Dawn):
 ═══════════════════════════════════════════════════════════════
 🌀 ÓRBITA ±3 DO SORTEIO ANTERIOR:
 ═══════════════════════════════════════════════════════════════
-- Para cada número X do sorteio anterior, considere X±1, X±2, X±3
+- Para cada número X, considere X±1, X±2, X±3
 - ⛔ PROIBIDO usar X exato!
 - Mínimo 4 números na órbita
 
@@ -258,64 +276,63 @@ PASSO 4 - ELEMENTO DO DIA (Golden Dawn):
 **NÚMEROS: XX, XX, XX, XX, XX, XX**
 
 ═══════════════════════════════════════════════════════════════
-🌌 ANÁLISE SUPREMA v8.0 - POR QUE ESTES NÚMEROS PARA ${nextDrawDate}?
+🌌 ANÁLISE SUPREMA v9.0 - POR QUE ESTES NÚMEROS PARA ${nextDrawDate}?
 ═══════════════════════════════════════════════════════════════
 
 📅 **DATA DO SORTEIO: ${nextDrawDate}**
 - Soma dos dígitos: [calcule]
 - Número Regente: [X]
-- Tesla 3-6-9: [é dia divino ou não?]
-- Planeta Regente: [nome do planeta]
-- Elemento do Dia: [FOGO/ÁGUA/AR/TERRA]
+- Lei da Atração 369: [é dia de manifestação?]
+- Planeta Regente: [nome]
+- Elemento: [FOGO/ÁGUA/AR/TERRA]
 
-⚡ **ANÁLISE TESLA 3-6-9:**
-- Quais números reduzem a 3: [liste]
-- Quais números reduzem a 6: [liste]
-- Quais números reduzem a 9: [liste]
-- Código Vórtice aplicado: [explique]
+✨ **LEI DA ATRAÇÃO 369:**
+- Dia de Manifestação: [sim/não e por quê]
+- Ciclo aplicado: [início/processo/resultado]
+- Energia do dia: [descrição]
 
-⚛️ **ANÁLISE QUÂNTICA:**
-- Números quânticos incluídos: [liste e explique]
-- Camadas/orbitais representadas: [explique]
-
-🌀 **FIBONACCI & RAZÃO ÁUREA:**
-- Números Fibonacci incluídos: [liste]
-- Relação com φ (1.618): [explique]
-
-🪐 **CORRESPONDÊNCIAS HERMÉTICAS:**
-- Quadrado Mágico usado: [qual planeta]
-- Números do quadrado incluídos: [liste]
-
-🜂🜄🜁🜃 **ELEMENTO DOMINANTE:**
-- Elemento: [nome]
-- Números desse elemento: [liste]
-
-🔯 **NÚMEROS MESTRES:**
+👼 **NÚMEROS ANGELICAIS:**
+- De 777 (Sorte): [quais múltiplos de 7 incluídos]
+- De 888 (Abundância): [quais múltiplos de 8 incluídos]
+- De 999 (Completude): [quais múltiplos de 9 incluídos]
 - Mestres incluídos: [liste]
-- Por que foram escolhidos: [explique]
+
+🔮 **LEI DA SUPOSIÇÃO (Neville):**
+- Números do "Eu Sou": [quais incluídos]
+- Visualização: [como se aplica]
+
+⚡ **TESLA 3-6-9:**
+- Reduzem a 3: [liste]
+- Reduzem a 6: [liste]
+- Reduzem a 9: [liste]
+
+⚛️ **FÍSICA QUÂNTICA:**
+- Números quânticos: [liste]
+- Camadas/orbitais: [explique]
+
+🌀 **FIBONACCI:**
+- Números incluídos: [liste]
+
+🪐 **HERMETISMO:**
+- Quadrado Mágico: [planeta e números]
+- Elemento: [números incluídos]
 
 🔢 **PRIMOS SAGRADOS:**
-- Primos incluídos: [liste]
-- Significado hermético: [explique]
+- Incluídos: [liste os 2]
 
-🕉️ **NÚMEROS VÉDICOS:**
-- Derivados de 108/72/49: [liste se houver]
-
-📊 **DISTRIBUIÇÃO FINAL:**
-- Baixos (01-20): [X números]
-- Médios (21-40): [X números]
-- Altos (41-60): [X números]
+📊 **DISTRIBUIÇÃO:**
+- Baixos: [X] | Médios: [X] | Altos: [X]
 - Pares: [X] | Ímpares: [X]
-- Finais: [liste cada final]
+- Finais: [liste]
 
 🌀 **ÓRBITA ±3:**
-- Números na órbita: [liste cada um e de qual veio]
+- [liste cada número e de qual veio]
 
-➕ **SOMA TOTAL:** [XXX] → reduz a [X]
+➕ **SOMA:** [XXX] → reduz a [X]
 
-✨ **CONCLUSÃO:** [Explique em 2-3 frases por que este jogo é ideal para a data ${nextDrawDate}, conectando o regente, elemento, Tesla e sistemas sagrados]
+✨ **CONCLUSÃO:** [2-3 frases conectando 369, angelicais, Tesla e hermetismo para esta data]
 
-⚠️ Análise baseada em física quântica, matemática Tesla, tradições herméticas e correspondências sagradas.`;
+⚠️ Sistema v9.0: Lei da Atração 369 + Números Angelicais + Lei da Suposição + Tesla + Quântico + Hermetismo.`;
 
     try {
       const resp = await fetch(CHAT_URL, {
