@@ -11,7 +11,8 @@ import { DistributionBar } from "@/components/DistributionBar";
 import { QuantumOracle } from "@/components/QuantumOracle";
 import { LotteryTabs } from "@/components/LotteryTabs";
 import { UserMenu } from "@/components/UserMenu";
-import { BarChart3, Hash, Sparkles, Target, TrendingUp, Zap, Atom, Dices, Loader2, ShieldX, AlertCircle } from "lucide-react";
+import { AIChat } from "@/components/AIChat";
+import { BarChart3, Hash, Sparkles, Target, TrendingUp, Zap, Atom, Dices, Loader2, ShieldX, AlertCircle, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const drawnNumbers = [5, 14, 22, 31, 47, 53];
@@ -307,19 +308,30 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Quantum Oracle */}
+        {/* AI Chat */}
         <section className="mb-8 sm:mb-12">
           <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6 opacity-0 animate-fade-in" style={{ animationDelay: "1300ms", animationFillMode: "forwards" }}>
+            <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6 text-gold" />
+            <h2 className="font-display text-xl sm:text-3xl font-semibold text-foreground">Chat com IA</h2>
+          </div>
+          <div className="opacity-0 animate-fade-in" style={{ animationDelay: "1400ms", animationFillMode: "forwards" }}>
+            <AIChat />
+          </div>
+        </section>
+
+        {/* Quantum Oracle */}
+        <section className="mb-8 sm:mb-12">
+          <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6 opacity-0 animate-fade-in" style={{ animationDelay: "1500ms", animationFillMode: "forwards" }}>
             <Atom className="w-5 h-5 sm:w-6 sm:h-6 text-cosmic-purple" />
             <h2 className="font-display text-xl sm:text-3xl font-semibold text-foreground">Oráculo Quântico</h2>
           </div>
-          <div className="opacity-0 animate-fade-in" style={{ animationDelay: "1400ms", animationFillMode: "forwards" }}>
+          <div className="opacity-0 animate-fade-in" style={{ animationDelay: "1600ms", animationFillMode: "forwards" }}>
             <QuantumOracle />
           </div>
         </section>
 
         {/* Footer */}
-        <footer className="mt-10 sm:mt-16 text-center opacity-0 animate-fade-in space-y-2 sm:space-y-3 pb-6" style={{ animationDelay: "1500ms", animationFillMode: "forwards" }}>
+        <footer className="mt-10 sm:mt-16 text-center opacity-0 animate-fade-in space-y-2 sm:space-y-3 pb-6" style={{ animationDelay: "1700ms", animationFillMode: "forwards" }}>
           <p className="text-muted-foreground text-xs sm:text-sm px-2">
             Análise simbólica não constitui previsão. Números sorteados em {drawDate}.
           </p>
