@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { useSessionProtection } from "@/hooks/useSessionProtection";
+import { useSubscription } from "@/hooks/useSubscription";
 import { NumberOrb } from "@/components/NumberOrb";
 import { AnalysisCard } from "@/components/AnalysisCard";
 import { StatRow } from "@/components/StatRow";
@@ -10,7 +11,8 @@ import { DistributionBar } from "@/components/DistributionBar";
 import { QuantumOracle } from "@/components/QuantumOracle";
 import { LotteryTabs } from "@/components/LotteryTabs";
 import { UserMenu } from "@/components/UserMenu";
-import { BarChart3, Hash, Sparkles, Target, TrendingUp, Zap, Atom, Dices, Loader2 } from "lucide-react";
+import { BarChart3, Hash, Sparkles, Target, TrendingUp, Zap, Atom, Dices, Loader2, ShieldX, AlertCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const drawnNumbers = [5, 14, 22, 31, 47, 53];
 const drawDate = "06/01/2026";
@@ -40,8 +42,9 @@ const numerologyData = [
 ];
 
 const Index = () => {
-  const { user, loading } = useAuth();
+  const { user, loading, signOut } = useAuth();
   const navigate = useNavigate();
+  const { subscription, loading: subLoading, hasAccess } = useSubscription();
   
   // Session protection - limits to 1 device at a time
   useSessionProtection(user?.id ?? null);
@@ -53,7 +56,7 @@ const Index = () => {
     }
   }, [user, loading, navigate]);
 
-  if (loading) {
+  if (loading || subLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <Loader2 className="w-8 h-8 animate-spin text-gold" />
@@ -63,6 +66,67 @@ const Index = () => {
 
   if (!user) {
     return null;
+  }
+
+  // Block access if no active subscription
+  if (!hasAccess) {
+    return (
+      <div className="min-h-screen flex items-center justify-center p-4">
+        <div className="glass-card rounded-xl p-8 max-w-md text-center">
+          <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-destructive/10 flex items-center justify-center">
+            <ShieldX className="w-10 h-10 text-destructive" />
+          </div>
+          <h1 className="font-display text-2xl font-bold text-foreground mb-4">
+            Acesso Bloqueado
+          </h1>
+          <div className="flex items-start gap-3 p-4 rounded-lg bg-muted/30 border border-border/30 mb-6 text-left">
+            <AlertCircle className="w-5 h-5 text-muted-foreground mt-0.5 flex-shrink-0" />
+            <div>
+              {subscription?.status === "expired" ? (
+                <p className="text-sm text-muted-foreground">
+                  Sua assinatura expirou em{" "}
+                  <span className="text-foreground font-medium">
+                    {subscription.expires_at
+                      ? new Date(subscription.expires_at).toLocaleDateString("pt-BR")
+                      : "data desconhecida"}
+                  </span>
+                  . Renove para continuar usando o app.
+                </p>
+              ) : subscription?.status === "cancelled" ? (
+                <p className="text-sm text-muted-foreground">
+                  Sua assinatura foi cancelada. Entre em contato para reativar.
+                </p>
+              ) : (
+                <p className="text-sm text-muted-foreground">
+                  Você ainda não possui uma assinatura ativa. Adquira seu acesso para usar o Oráculo Quântico.
+                </p>
+              )}
+            </div>
+          </div>
+          <div className="space-y-3">
+            <Button
+              onClick={() => window.open("https://hotmart.com/seu-produto", "_blank")}
+              className="w-full gradient-gold text-primary-foreground"
+            >
+              Adquirir Assinatura
+            </Button>
+            <Button
+              onClick={async () => {
+                await signOut();
+                navigate("/");
+              }}
+              variant="outline"
+              className="w-full"
+            >
+              Sair
+            </Button>
+          </div>
+          <p className="text-xs text-muted-foreground mt-6">
+            Se você já comprou, aguarde alguns minutos para a ativação automática.
+          </p>
+        </div>
+      </div>
+    );
   }
 
   return (
