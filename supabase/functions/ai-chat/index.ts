@@ -5,18 +5,44 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
+interface TextContent {
+  type: "text";
+  text: string;
+}
+
+interface ImageContent {
+  type: "image_url";
+  image_url: {
+    url: string;
+  };
+}
+
+type MessageContent = string | (TextContent | ImageContent)[];
+
+interface Message {
+  role: "user" | "assistant" | "system";
+  content: MessageContent;
+}
+
 serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
-    const { messages, systemPrompt } = await req.json();
+    const { messages, systemPrompt, model } = await req.json() as {
+      messages: Message[];
+      systemPrompt?: string;
+      model?: string;
+    };
     
     const OPENROUTER_API_KEY = Deno.env.get("OPENROUTER_API_KEY");
     if (!OPENROUTER_API_KEY) {
       throw new Error("OPENROUTER_API_KEY não está configurada");
     }
+
+    // Use gpt-4o-mini por padrão (suporta imagens)
+    const selectedModel = model || "openai/gpt-4o-mini";
 
     const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
@@ -27,7 +53,7 @@ serve(async (req) => {
         "X-Title": "Oraculo Quantico",
       },
       body: JSON.stringify({
-        model: "openai/gpt-4o-mini",
+        model: selectedModel,
         messages: [
           { 
             role: "system", 
@@ -57,7 +83,7 @@ serve(async (req) => {
         });
       }
       
-      return new Response(JSON.stringify({ error: "Erro ao conectar com a IA" }), {
+      return new Response(JSON.stringify({ error: "Erro ao conectar com a IA", details: errorText }), {
         status: 500,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
