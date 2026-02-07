@@ -77,12 +77,53 @@ export type Database = {
         }
         Relationships: []
       }
+      user_sessions: {
+        Row: {
+          created_at: string
+          device_info: string | null
+          id: string
+          ip_address: string | null
+          is_active: boolean
+          last_seen_at: string
+          session_token: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          device_info?: string | null
+          id?: string
+          ip_address?: string | null
+          is_active?: boolean
+          last_seen_at?: string
+          session_token: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          device_info?: string | null
+          id?: string
+          ip_address?: string | null
+          is_active?: boolean
+          last_seen_at?: string
+          session_token?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      invalidate_other_sessions: {
+        Args: { p_current_session_token: string; p_user_id: string }
+        Returns: undefined
+      }
+      is_session_valid: { Args: { p_session_token: string }; Returns: boolean }
+      update_session_last_seen: {
+        Args: { p_session_token: string }
+        Returns: undefined
+      }
     }
     Enums: {
       [_ in never]: never

@@ -60,6 +60,19 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const signOut = async () => {
+    // Cleanup session before signing out
+    const sessionToken = localStorage.getItem("app_session_token");
+    if (sessionToken) {
+      try {
+        await supabase
+          .from("user_sessions")
+          .update({ is_active: false })
+          .eq("session_token", sessionToken);
+      } catch (error) {
+        console.error("Error cleaning up session:", error);
+      }
+      localStorage.removeItem("app_session_token");
+    }
     await supabase.auth.signOut();
   };
 
