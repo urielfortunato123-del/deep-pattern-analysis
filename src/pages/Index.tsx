@@ -1,3 +1,7 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/hooks/useAuth";
+import { useSessionProtection } from "@/hooks/useSessionProtection";
 import { NumberOrb } from "@/components/NumberOrb";
 import { AnalysisCard } from "@/components/AnalysisCard";
 import { StatRow } from "@/components/StatRow";
@@ -6,7 +10,7 @@ import { DistributionBar } from "@/components/DistributionBar";
 import { QuantumOracle } from "@/components/QuantumOracle";
 import { LotteryTabs } from "@/components/LotteryTabs";
 import { UserMenu } from "@/components/UserMenu";
-import { BarChart3, Hash, Sparkles, Target, TrendingUp, Zap, Atom, Dices } from "lucide-react";
+import { BarChart3, Hash, Sparkles, Target, TrendingUp, Zap, Atom, Dices, Loader2 } from "lucide-react";
 
 const drawnNumbers = [5, 14, 22, 31, 47, 53];
 const drawDate = "06/01/2026";
@@ -36,6 +40,31 @@ const numerologyData = [
 ];
 
 const Index = () => {
+  const { user, loading } = useAuth();
+  const navigate = useNavigate();
+  
+  // Session protection - limits to 1 device at a time
+  useSessionProtection(user?.id ?? null);
+
+  // Redirect to auth if not logged in
+  useEffect(() => {
+    if (!loading && !user) {
+      navigate("/");
+    }
+  }, [user, loading, navigate]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Loader2 className="w-8 h-8 animate-spin text-gold" />
+      </div>
+    );
+  }
+
+  if (!user) {
+    return null;
+  }
+
   return (
     <div className="min-h-screen py-6 px-3 sm:py-12 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
